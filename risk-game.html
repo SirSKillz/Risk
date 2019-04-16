@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+
+<style type="text/css">
+
+.panel.panel-default #collapseOne1 #map {
+    position:relative;
+}
+
+/*.Iceland{position:absolute; left:240px; top:67px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;*/
+/*    font-size: small; color: red;*/
+/*    font-weight: bold;}*/
+
+
+.Afghanistan{visibility: hidden; position:absolute; left:387px; top:143px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+    
+.Alaska{visibility: hidden; position:absolute; left:22px; top:52px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+    
+.Alberta{visibility: hidden; position:absolute; left:71px; top:86px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Argentina{visibility: hidden; position:absolute; left:140px; top:321px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Brazil{visibility: hidden; position:absolute; left:170px; top:253px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Britain{ visibility: hidden; position:absolute; left:226px; top:118px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.China{visibility: hidden; position:absolute; left:456px; top:166px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Congo{visibility: hidden; position:absolute; left:312px; top:301px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.CtrlAmerica{visibility: hidden; position:absolute; left:77px; top:175px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.EAfrica{visibility: hidden; position:absolute; left:340px; top:270px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.EAustralia{visibility: hidden; position:absolute; left:564px; top:349px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.EasternUS{visibility: hidden; position:absolute; left:125px; top:139px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Egypt{visibility: hidden; position:absolute; left:309px; top:228px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Greenland{visibility: hidden; position:absolute; left:183px; top:22px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Iceland{visibility: hidden; position:absolute; left:240px; top:70px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.India{visibility: hidden; position:absolute; left:423px; top:201px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Indonesia{visibility: hidden; position:absolute; left:483px; top:281px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Irkutsk{visibility: hidden; position:absolute; left:472px; top:90px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Japan{visibility: hidden; position:absolute; left:540px; top:133px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Kamchatka{visibility: hidden; position:absolute; left:527px; top:42px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Madagascar{visibility: hidden; position:absolute; left:365px; top:350px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Mideast{visibility: hidden; position:absolute; left:352px; top:194px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Mongolia{visibility: hidden; position:absolute; left:480px; top:128px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.NAfrica{visibility: hidden; position:absolute; left:248px; top:237px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.NEurope{visibility: hidden; position:absolute; left:281px; top:123px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.NewGuinea{visibility: hidden; position:absolute; left:533px; top:272px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.NWTerritory{visibility: hidden; position:absolute; left:93px; top:51px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Ontario{visibility: hidden; position:absolute; left:114px; top:90px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Peru{visibility: hidden; position:absolute; left:124px; top:272px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Quebec{visibility: hidden; position:absolute; left:157px; top:90px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.SAfrica{visibility: hidden; position:absolute; left:307px; top:348px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.SEurope{visibility: hidden; position:absolute; left:288px; top:164px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Scandinavia{visibility: hidden; position:absolute; left:283px; top:75px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Siam{visibility: hidden; position:absolute; left:474px; top:221px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Siberia{visibility: hidden; position:absolute; left:425px; top:39px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Ukraine{visibility: hidden; position:absolute; left:344px; top:103px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Ural{visibility: hidden; position:absolute; left:400px; top:83px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Venezuela{visibility: hidden; position:absolute; left:119px; top:220px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.WAustralia{visibility: hidden; position:absolute; left:502px; top:348px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.WEurope{visibility: hidden; position:absolute; left:237px; top:180px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.WesternUS{visibility: hidden; position:absolute; left:72px; top:131px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+
+.Yakutsk{visibility: hidden; position:absolute; left:478px; top:43px; height:18px; width:25px;background-color:rgba(231, 211, 179, 0); border:2px;
+    font-size: small; color: red;
+    font-weight: bold;}
+    
+.playerTurnID{visibility: hidden; position:absolute; left: 600px; top: 40px}
+
+.numTroopsRemaining{visibility: hidden; position:absolute; left: 600px; top: 50px}
+
+.attackControlled{visibility:hidden; position:absolute; left:600px; top: 300px;}
+
+.attack20{visibility:hidden; position:absolute; left:600px; top:340px;}
+
+.numberTroopsAttacking{visibility: hidden; position:absolute; left:660px; top:303px;}
+
+.select2{visibility: hidden; position: absolute; left: 690px; top:301px;}
+
+.attackingCountry{visibility:hidden; position:absolute; left:580px; top:100px;}
+
+.isAttacking{visibility:hidden; position:absolute; left:660px; top:100px;}
+
+.defendingCountry{visibility: hidden; position: absolute; left:750px; top:100px;}
+
+.attackingTroops{visibility:hidden; position:absolute; left:615px; top:130px;}
+
+.undoButton{visibility:hidden; position:absolute; left:650px; top:130px;}
+
+.defendingTroops{visibility:hidden; position:absolute; left:720px; top:130px;}
+
+.endTurn{visibility:hidden; position: absolute; left:620px; top:400px}
+
+.restart{visibility:hidden}
+
+.turnPhase{visibility:hidden; position:absolute; left:625px; top:20px;}
+
+.randomAssigns{visibility: hidden; position: absolute; left: 625px; top: 250px}
+</style>
+
+<script>
+var attackingCountry = {};
+var defendingCountry = {};
+var remainingArmies = [];
+var playerTurn = 0;
+var turnPhase = "fortify";
+var fortifyArmies = 10;
+var players = [{name: "", number: 1, owns:["D"], color: "red"}, {name:"", number: 2, owns:["D"], color:"blue"}];
+var continents = [  {name: "N America", bonus: 5, cCount: 9},
+                    {name: "Europe", bonus: 5, cCount: 7 },
+                    {name: "Asia", bonus: 7, cCount: 12},
+                    {name: "S America", bonus: 2, cCount: 4},
+                    {name: "Africa", bonus: 3, cCount: 6},
+                    {name: "Australia", bonus: 2, cCount: 4}];
+var countries = ["Afghanistan",
+"Alaska",
+"Alberta",
+"Argentina",
+"Brazil",
+"Britain",
+"China",
+"Congo",
+"Ctrl America",
+"E Africa",
+"E Australia",
+"Eastern US",
+"Egypt",
+"Greenland",
+"Iceland",
+"India",
+"Indonesia",
+"Irkutsk",
+"Japan",
+"Kamchatka",
+"Madagascar",
+"Mideast",
+"Mongolia",
+"N Africa",
+"N Europe",
+"New Guinea",
+"NW Territory",
+"Ontario",
+"Peru",
+"Quebec",
+"S Africa",
+"S Europe",
+"Scandinavia",
+"Siam",
+"Siberia",
+"Ukraine",
+"Ural",
+"Venezuela",
+"W Australia",
+"W Europe",
+"Western US",
+"Yakutsk"];
+var arrayCountries = [{name: "Afghanistan",attacks: ["Ural", "Ukraine", "Mideast", "India", "China"],continent: "Asia", xcoord: 387, ycoord: 143}, 
+{name: "Alaska",attacks: ["NW Territory", "Kamchatka", "Alberta"],continent: "N America", xcoord: 22, ycoord: 52}, 
+{name: "Alberta",attacks: ["NW Territory", "Alaska", "Ontario", "Western US"],continent: "N America", xcoord: 71, ycoord: 86},
+{name: "Argentina",attacks: ["Peru", "Brazil"],continent: "S America", xcoord: 140, ycoord: 321}, 
+{name: "Brazil",attacks: ["Venezuela", "Peru", "Argentina", "N Africa"],continent: "S America", xcoord: 170, ycoord: 253}, 
+{name: "Britain",attacks: ["Iceland", "W Europe", "Scandinavia", "N Europe"],continent: "Europe", xcoord: 226, ycoord: 118}, 
+{name: "China",attacks: ["Siberia", "Ural", "Afghanistan", "India", "Siam", "Mongolia"],continent: "Asia", xcoord: 456, ycoord: 166}, 
+{name: "Congo",attacks: ["N Africa", "S Africa", "E Africa"],continent: "Africa", xcoord: 312, ycoord: 301}, 
+{name: "Ctrl America",attacks: ["Western US", "Eastern US", "Venezuela"],continent: "N America", xcoord: 77, ycoord: 175}, 
+{name: "E Africa",attacks: ["Madagascar", "S Africa", "Congo", "N Africa", "Egypt", "Mideast"],continent: "Africa", xcoord: 340, ycoord: 270}, 
+{name: "E Australia",attacks: ["New Guinea", "W Australia"],continent: "Australia", xcoord: 564, ycoord: 349}, 
+{name: "Eastern US",attacks: ["Quebec", "Ontario", "Western US", "Ctrl America"],continent: "N America", xcoord: 125, ycoord: 139}, 
+{name: "Egypt",attacks: ["S Europe", "N Africa", "E Africa", "Mideast"],continent: "Africa", xcoord: 309, ycoord: 228}, 
+{name: "Greenland",attacks: ["Iceland", "NW Territory", "Ontario", "Quebec"],continent: "N America", xcoord: 183, ycoord: 22}, 
+{name: "Iceland",attacks: ["Scandinavia", "Greenland", "Britain"],continent: "Europe", xcoord: 240, ycoord: 70}, 
+{name: "India",attacks: ["Mideast", "Afghanistan", "China", "Siam"],continent: "Asia", xcoord: 423, ycoord: 201}, 
+{name: "Indonesia",attacks: ["Siam", "W Australia", "New Guinea"],continent: "Australia", xcoord: 486, ycoord: 283}, 
+{name: "Irkutsk",attacks: ["Yakutsk", "Siberia", "Mongolia", "Kamchatka"],continent: "Asia", xcoord: 472, ycoord: 90}, 
+{name: "Japan",attacks: ["Mongolia", "Kamchatka"],continent: "Asia", xcoord: 547, ycoord: 135}, 
+{name: "Kamchatka",attacks: ["Yakutsk", "Irkutsk", "Japan", "Mongolia", "Alaska"],continent: "Asia", xcoord: 527, ycoord: 42}, 
+{name: "Madagascar",attacks: ["S Africa", "E Africa"],continent: "Africa", xcoord: 372, ycoord: 354}, 
+{name: "Mideast",attacks: ["Ukraine", "S Europe", "Egypt", "E Africa", "India", "Afghanistan"],continent: "Asia", xcoord: 352, ycoord: 194}, 
+{name: "Mongolia",attacks: ["Irkutsk", "Siberia", "China", "Japan", "Kamchatka"],continent: "Asia", xcoord: 480, ycoord: 128}, 
+{name: "N Africa",attacks: ["W Europe", "Brazil", "Congo", "E Africa", "Egypt", "S Europe"],continent: "Africa", xcoord: 248, ycoord: 237}, 
+{name: "N Europe",attacks: ["Scandinavia", "Ukraine", "S Europe", "W Europe", "Britain"],continent: "Europe", xcoord: 281, ycoord: 123}, 
+{name: "New Guinea",attacks: ["E Australia", "W Australia", "Indonesia"],continent: "Australia", xcoord: 533, ycoord: 272}, 
+{name: "NW Territory",attacks: ["Greenland", "Alaska", "Alberta", "Ontario"],continent: "N America", xcoord: 93, ycoord: 51}, 
+{name: "Ontario",attacks: ["Greenland", "Quebec", "Eastern US", "Western US", "NW Territory", "Alberta"],continent: "N America", xcoord: 114, ycoord: 90}, 
+{name: "Peru",attacks: ["Argentina", "Brazil", "Venezuela"],continent: "S America", xcoord: 124, ycoord: 272}, 
+{name: "Quebec",attacks: ["Greenland", "Ontario", "Eastern US"],continent: "N America", xcoord: 157, ycoord: 90}, 
+{name: "S Africa",attacks: ["Congo", "Madagascar", "E Africa"],continent: "Africa", xcoord: 307, ycoord: 348}, 
+{name: "S Europe",attacks: ["N Europe", "W Europe", "Ukraine", "N Africa", "Egypt", "Mideast"],continent: "Europe", xcoord: 288, ycoord: 164}, 
+{name: "Scandinavia",attacks: ["Ukraine", "Iceland", "Britain", "N Europe"],continent: "Europe", xcoord: 283, ycoord: 75}, 
+{name: "Siam",attacks: ["India", "China", "Indonesia"],continent: "Asia", xcoord: 474, ycoord: 221}, 
+{name: "Siberia",attacks: ["Yakutsk", "Irkutsk", "Mongolia", "China", "Ural"],continent: "Asia", xcoord: 425, ycoord: 39}, 
+{name: "Ukraine",attacks: ["Ural", "Scandinavia", "N Europe", "S Europe", "Mideast", "Afghanistan"],continent: "Europe", xcoord: 344, ycoord: 103}, 
+{name: "Ural",attacks: ["Siberia", "Ukraine", "Afghanistan", "China"],continent: "Asia", xcoord: 400, ycoord: 83}, 
+{name: "Venezuela",attacks: ["Ctrl America", "Brazil", "Peru"],continent: "S America", xcoord: 119, ycoord: 220}, 
+{name: "W Australia",attacks: ["Indonesia", "New Guinea", "E Australia"],continent: "Australia", xcoord: 502, ycoord: 348}, 
+{name: "W Europe",attacks: ["Britain", "N Europe", "S Europe", "N Africa"],continent: "Europe", xcoord: 237, ycoord: 180}, 
+{name: "Western US",attacks: ["Alberta", "Ontario", "Eastern US", "Ctrl America"],continent: "N America", xcoord: 72, ycoord: 131}, 
+{name: "Yakutsk",attacks: ["Kamchatka", "Siberia", "Irkutsk"],continent: "Asia", xcoord: 478, ycoord: 43}];
+
+var startingArmies = [0, 0, 40, 35, 30, 30, 25]; //number of starting armies defined by # of players
+function restart()  //restarts the game
+{
+   location.reload(true);
+
+}
+function findIndexInData(data, property, value)  //i can't remember what this does 
+{
+    var result = -1;
+    data.some(function (item, i) {
+        if (item[property] === value) {
+            result = i;
+            return true;
+        }
+    });
+    return result;
+}
+function beginTurn() //number of troops at the begining of the turn
+{
+    fortifyArmies = 0;
+    fortifyArmies = ownedCountryBonus(players[playerTurn].owns.length);
+    for(var i=0; i<continents.length; i++)
+    {
+        var contName = continents[i].name;
+        var bonus = continents[i].bonus;
+        var cCount = continents[i].cCount;
+        for(var z= 0; z<players[playerTurn].owns.length; z++)
+        {
+            var countryGrap = players[playerTurn].owns[z].name;
+            for(var w=0; w<arrayCountries.length; w++)
+            {
+                if(arrayCountries[w].name == countryGrap)
+                {
+                    if(arrayCountries[w].continent == contName)
+                    {
+                        cCount= cCount-1
+                    }//if statement for CCount
+                }//if statement for this crap is done
+            }//country done loop
+        }//for loop own countries end
+        if (cCount == 0)
+        {
+            fortifyArmies = fortifyArmies+ bonus;
+            alert(contName)
+        }//if cCount done
+    }//end continents for loop
+}//function beginTurn end
+
+function ownedCountryBonus(OwnedCount) //function to figure out country bonus
+{
+    return Math.max(3, Math.floor(OwnedCount/3))
+    
+}
+
+function playerOwnedIndex(country, player) //if player owns the country they click on
+{
+    for(var i=0; i<players[player].owns.length; i++)
+    {
+        if(players[player].owns[i].name  == country)
+        {
+            return i
+        }
+    }
+}
+
+function selectButton() //select button function
+{
+   var x = document.getElementById("select2").value;
+   return x
+}
+
+
+function conquered1(attackingArmies) //when a territory is taken over
+{
+    var maxtransfer = attackingCountry.armies -1;
+    var response = prompt("How many troops would you like to move from " + attackingCountry.country + 
+        " to " + defendingCountry.country + "? (" + attackingArmies + "-" + maxtransfer + ")");
+    var numberOfTroops = parseInt(response);
+    if( response.toLowerCase() === "max"){
+        document.getElementById(defendingCountry.country.replace(/\s+/g, '')).style.color = players[playerTurn].color;
+        document.getElementById(defendingCountry.country.replace(/\s+/g, '')).value = maxtransfer;
+        var newTroopCount = document.getElementById(attackingCountry.country.replace(/\s+/g, '')).value - maxtransfer;
+        document.getElementById(attackingCountry.country.replace(/\s+/g, '')).value = newTroopCount;
+        players[playerTurn].owns.push({name: defendingCountry.country, armies: maxtransfer });
+        players[playerTurn].owns[playerOwnedIndex(attackingCountry.country, playerTurn)].armies = newTroopCount;
+        players[defendingCountry.player].owns.splice(playerOwnedIndex(defendingCountry.country, defendingCountry.player), 1);
+        if(players[defendingCountry.player].owns.length == 0)
+        {
+            players.splice(defendingCountry.player , 1);
+            if(players.length == 1)
+            {
+                alert("Player " + players[0].number + " has won the game")
+            }
+        }
+        defendingCountry = {};
+        attackingCountry = {};
+        turnPhase = "attack";
+        document.getElementById("attackingCountry").style.visibility = "hidden";
+        document.getElementById("defendingCountry").style.visibility = "hidden";
+        document.getElementById("isAttacking").style.visibility = "hidden";
+        document.getElementById("undoButton").style.visibility = "hidden";
+        document.getElementById("attackingTroops").style.visibility = "hidden";
+        document.getElementById("defendingTroops").style.visibility = "hidden";
+        document.getElementById("attackControlled").style.visibility = "hidden";
+        document.getElementById("select2").style.visibility = "hidden";
+        document.getElementById("attack20").style.visibility = "hidden";
+        document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
+    }
+    else if(numberOfTroops > attackingArmies - 1)
+    {
+        if(numberOfTroops< attackingCountry.armies)
+        {
+            document.getElementById(defendingCountry.country.replace(/\s+/g, '')).style.color = players[playerTurn].color;
+            document.getElementById(defendingCountry.country.replace(/\s+/g, '')).value = numberOfTroops;
+            var newTroopCount = document.getElementById(attackingCountry.country.replace(/\s+/g, '')).value - numberOfTroops;
+            document.getElementById(attackingCountry.country.replace(/\s+/g, '')).value = newTroopCount;
+            players[playerTurn].owns.push({name: defendingCountry.country, armies: numberOfTroops });
+            players[playerTurn].owns[playerOwnedIndex(attackingCountry.country, playerTurn)].armies = newTroopCount;
+            players[defendingCountry.player].owns.splice(playerOwnedIndex(defendingCountry.country, defendingCountry.player), 1);
+            turnPhase = "attack";
+            if(players[defendingCountry.player].owns.length == 0)
+            {
+                players.splice(defendingCountry.player , 1);
+                if(players.length == 1)
+                {
+                    alert("Player " + players[0].number + " has won the game");
+                    document.getElementById("endTurn").style.visibility = "hidden";
+                    turnPhase = "END"
+                }
+            }
+            defendingCountry = {};
+            attackingCountry = {};
+            document.getElementById("attackingCountry").style.visibility = "hidden";
+            document.getElementById("defendingCountry").style.visibility = "hidden";
+            document.getElementById("isAttacking").style.visibility = "hidden";
+            document.getElementById("undoButton").style.visibility = "hidden";
+            document.getElementById("attackingTroops").style.visibility = "hidden";
+            document.getElementById("defendingTroops").style.visibility = "hidden";
+            document.getElementById("attackControlled").style.visibility = "hidden";
+            document.getElementById("select2").style.visibility = "hidden";
+            document.getElementById("attack20").style.visibility = "hidden";
+            document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
+        }
+        else if (numberOfTroops >= attackingCountry.armies)
+        {
+            alert("Number entered was too high. Try a number below the number of armies in " + attackingCountry.country + " minus 1");
+            conquered1(attackingArmies)
+        }
+    }
+    else if (numberOfTroops < attackingArmies)
+    {
+        alert("Number entered was too low. The minimum number of troops required to move into " + defendingCountry.country + " is " + attackingArmies);
+        conquered1(attackingArmies)
+    }
+    else {
+        alert("Not a number. Try again");
+        conquered1(attackingArmies)
+    }
+}
+
+function endTurn()//when player ends turn
+{
+    if(playerTurn == players.length - 1)
+	{
+		playerTurn = 0
+	}//counter player length
+	else
+	{
+		playerTurn++
+	}
+    defendingCountry = {};
+    attackingCountry = {};
+    document.getElementById("attackingCountry").style.visibility = "hidden";
+    document.getElementById("defendingCountry").style.visibility = "hidden";
+    document.getElementById("isAttacking").style.visibility = "hidden";
+    document.getElementById("undoButton").style.visibility = "hidden";
+    document.getElementById("attackingTroops").style.visibility = "hidden";
+    document.getElementById("defendingTroops").style.visibility = "hidden";
+    document.getElementById("attackControlled").style.visibility = "hidden";
+    document.getElementById("select2").style.visibility = "hidden";
+    document.getElementById("attack20").style.visibility = "hidden";
+    document.getElementById("numberTroopsAttacking").style.visibility = "hidden";
+    document.getElementById("endTurn").style.visibility = "hidden";
+    beginTurn();
+    document.getElementById("randomAssigns").style.visibility = "visible";
+    document.getElementById("playerTurnID").style.visibility = "visible";
+    document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+    document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+    document.getElementById("numTroopsRemaining").style.visibility = "visible";
+    document.getElementById("turnPhase").innerHTML = "Fortify";
+    turnPhase = "fortify"
+}
+
+function undo(){ 
+    defendingCountry = {};
+    attackingCountry = {};
+    turnPhase = "attack";
+    document.getElementById("attackingCountry").style.visibility = "hidden";
+    document.getElementById("defendingCountry").style.visibility = "hidden";
+    document.getElementById("isAttacking").style.visibility = "hidden";
+    document.getElementById("undoButton").style.visibility = "hidden";
+    document.getElementById("attackingTroops").style.visibility = "hidden";
+    document.getElementById("defendingTroops").style.visibility = "hidden";
+    document.getElementById("attackControlled").style.visibility = "hidden";
+    document.getElementById("select2").style.visibility = "hidden";
+    document.getElementById("attack20").style.visibility = "hidden";
+    document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
+} //undo
+
+
+function callAttackbutton(){
+    
+    if(turnPhase=="battleInProgress"){
+        var sbuttonvalue = parseInt(selectButton());
+        attackControlled(sbuttonvalue)
+    }
+} // attack controlled 
+
+
+
+function attackControlled (attackingArmies)  // Triggered from Attack button
+{
+    var conquered = false;
+    if(attackingCountry.armies >= 1 + attackingArmies)
+    {
+        //creating attack dice rolls
+        var attackdice = [];
+        for(var i=0; i < attackingArmies; i++){
+            attackdice.push(Math.floor(Math.random()* 6))
+        }
+        attackdice.sort();
+        attackdice.reverse();
+        
+        var defenderdice = [];
+        for(var d=0; d < Math.min(2, defendingCountry.armies); d++){
+            defenderdice.push(Math.floor(Math.random()* 6))
+        }
+        defenderdice.sort();
+        defenderdice.reverse();
+            
+        for(var compare = 0; compare < Math.min(defenderdice.length, attackdice.length); compare++)
+        {
+            if(attackdice[compare]>defenderdice[compare])
+            {
+                // Attacker won
+                // Subtract from defender, defender object and check for conquer (change turnPhase = attack)
+                defendingCountry.armies = defendingCountry.armies -1;
+                players[defendingCountry.player].owns[playerOwnedIndex(defendingCountry.country, defendingCountry.player)].armies = defendingCountry.armies;
+                document.getElementById("defendingTroops").innerHTML = defendingCountry.armies;
+                document.getElementById(defendingCountry.country.replace(/\s+/g, '')).value = defendingCountry.armies;
+                if(defendingCountry.armies == 0){
+                        conquered = true;
+                        conquered1(attackingArmies)
+                }
+                // set conquered flag
+                // Change inner html 
+            } else {
+                // Defender won
+                // subtract from attacker, attacker object and check for remaining troops == 1
+                attackingCountry.armies = attackingCountry.armies -1;
+                players[playerTurn].owns[playerOwnedIndex(attackingCountry.country, playerTurn)].armies = attackingCountry.armies;
+                document.getElementById("attackingTroops").innerHTML = attackingCountry.armies;
+                document.getElementById(attackingCountry.country.replace(/\s+/g, '')).value = attackingCountry.armies
+            }
+        } //End compare
+        
+       
+    }// End if
+    if (attackingCountry.armies == 1)
+    {
+        alert("You have lost the battle between " + attackingCountry.country + " and " + defendingCountry.country);
+        defendingCountry = [];
+        attackingCountry = [];
+        turnPhase = "attack";
+        document.getElementById("attackingCountry").style.visibility = "hidden";
+        document.getElementById("defendingCountry").style.visibility = "hidden";
+        document.getElementById("isAttacking").style.visibility = "hidden";
+        document.getElementById("undoButton").style.visibility = "hidden";
+        document.getElementById("attackingTroops").style.visibility = "hidden";
+        document.getElementById("defendingTroops").style.visibility = "hidden";
+        document.getElementById("attackControlled").style.visibility = "hidden";
+        document.getElementById("select2").style.visibility = "hidden";
+        document.getElementById("attack20").style.visibility = "hidden";
+        document.getElementById("numberTroopsAttacking").style.visibility = "hidden" 
+    }
+    return conquered
+    
+} // End attackControlled
+
+function attack20()
+{
+    if(turnPhase=="battleInProgress"){
+    
+        var conquered = false;
+        var conquered = false;
+        if(attackingCountry.armies>3){
+            while(attackingCountry.armies>3 && conquered==false)
+            {
+                conquered = attackControlled(3);
+            }
+        }
+        if(attackingCountry.armies>2){
+            while(attackingCountry.armies>2 && conquered==false)
+            {
+                conquered = attackControlled(2);
+            }
+        }
+        if(attackingCountry.armies>1){
+            while(attackingCountry.armies>1 && conquered==false)
+            {
+                conquered = attackControlled(1);
+            }
+        }
+    }
+} //end attack 20
+
+
+function countryButton(country)
+{
+    if(turnPhase == "initialFortify")
+    {
+         if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
+         {
+             /* TODO:   Disable radio buttons */
+             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
+                players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
+                remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
+               if(playerTurn == players.length - 1)
+		       {
+		           playerTurn = 0
+		      
+	           }
+	           else
+	           {
+	    	       playerTurn++
+	    	       
+	           } 
+	           document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+	           document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+	           document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+	           if(remainingArmies.reduce(function(a,b){return a + b},0)==0)
+	           {
+	               beginTurn();
+	               document.getElementById("turnPhase").innerHTML = "Fortify";
+	               document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+	               turnPhase = "fortify"
+	           }
+	           // *********TODO PLAYER TURN TEXT IN UPPER RIGHT CORNER
+         }
+    }//intialFortify end if statement
+    else if(turnPhase == "fortify")
+    {
+         if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
+         {
+            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+           //armies to start crap at begin = var fortifyArmies
+            if(fortifyArmies>0)
+            {
+                document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
+                players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
+                fortifyArmies = fortifyArmies - 1
+            }//fortifyArmies if statement end
+        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+        if(fortifyArmies == 0)
+            {
+                document.getElementById("turnPhase").innerHTML = "Attack";
+                document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+                document.getElementById("troopNum").style.visibility = "hidden";
+                document.getElementById("endTurn").style.visibility = "visible";
+                document.getElementById("randomAssigns").style.visibility = "hidden";
+                turnPhase = "attack"
+            }//turnPhase end
+        
+        }//if statement end if color == player color
+    }// else if statement for fortify end
+    else if(turnPhase == "attack")
+    {
+      
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
+        {
+           if(players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies > 1)
+            {
+                attackingCountry.armies =  players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
+                attackingCountry.country = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].name;
+                attackingCountry.color = players[playerTurn].color;
+                document.getElementById("attackControlled").style.visibility = "visible";
+                document.getElementById("select2").style.visibility = "visible";
+                document.getElementById("numberTroopsAttacking").style.visibility = "visible";
+                document.getElementById("attackingCountry").style.visibility = "visible";
+                document.getElementById("attackingCountry").innerHTML = country;
+                document.getElementById("attackingCountry").style.color = players[playerTurn].color;
+                document.getElementById("undoButton").style.visibility = "visible";
+                document.getElementById("attackingTroops").style.visibility = "visible";
+                document.getElementById("attackingTroops").innerHTML = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
+                document.getElementById("isAttacking").style.visibility = "visible";
+                document.getElementById("attack20").style.visibility = "visible";
+                turnPhase = "defend"
+            }//if statement for >1
+        }//if color = end
+    }//else if statement end attack
+    else if(turnPhase == "defend")
+    {
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color != players[playerTurn].color)
+       {
+           for(var i = 0; i<players.length; i++)
+            {
+                var found = findIndexInData(players[i].owns, "name", country);
+                if(found != -1)
+                {
+                    var numCountry = findIndexInData(arrayCountries, "name", attackingCountry.country);
+                    var attackFound = arrayCountries[numCountry].attacks.indexOf(country);
+                    if(attackFound != -1)
+                    {
+                                    defendingCountry.country = country;
+                                    defendingCountry.armies = players[i].owns[found].armies;
+                                    defendingCountry.player = i;
+                                    defendingCountry.color = players[i].color;
+                                    document.getElementById("defendingCountry").style.visibility = "visible";
+                                    document.getElementById("defendingCountry").style.color = players[i].color;
+                                    document.getElementById("defendingCountry").innerHTML = country;
+                                    document.getElementById("defendingTroops").style.visibility = "visible";
+                                    document.getElementById("defendingTroops").innerHTML = defendingCountry.armies;
+                                    
+                                    // await input from attackControlled
+                                    turnPhase = "battleInProgress"
+                                    /* *** TODO: Render attack page elements */
+                    }    
+                }    
+            }                      
+        }//if color != to player color
+    }//defend else if end
+}//countryButton end
+function randomAssign()
+{
+    if(turnPhase === "initialFortify")
+    {
+       while(remainingArmies[playerTurn] > 0 ){
+            var rand = Math.floor(Math.random()* players[playerTurn].owns.length);
+            var temp = 0;
+            var z = 0;
+            
+            for(z; z < countries.length; z++)
+            {
+                
+                if(countries[z] === players[playerTurn].owns[rand].name){
+                    
+                    temp = z;   
+                }
+            }
+            players[playerTurn].owns[rand].armies++; 
+            document.getElementById(countries[temp].replace(/\s+/g, '')).value = parseInt(document.getElementById(countries[temp].replace(/\s+/g, '')).value) + 1;
+            remainingArmies[playerTurn]--;
+        }
+        if(playerTurn == players.length - 1)
+		{
+		    playerTurn = 0
+		    
+	    }
+	    else
+	    {
+	        playerTurn++
+	        
+	    } 
+	    document.getElementById("playerTurnID").style.color = players[playerTurn].color;                
+	    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+	    document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+	    if(remainingArmies.reduce(function(a,b){return a + b},0)==0)
+	    {
+	        beginTurn();
+	        document.getElementById("turnPhase").innerHTML = "Fortify";
+	        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+	        turnPhase = "fortify"
+	    }
+    }
+    else if(turnPhase === "fortify"){
+         while(fortifyArmies > 0 ){
+            var rand = Math.floor(Math.random()* players[playerTurn].owns.length);
+            var temp = 0;
+            var z = 0;
+            
+            for(z; z < countries.length; z++)
+            {
+                
+                if(countries[z] === players[playerTurn].owns[rand].name){
+                    
+                    temp = z;   
+                }
+            }
+            
+            document.getElementById(countries[temp].replace(/\s+/g, '')).value = parseInt(document.getElementById(countries[temp].replace(/\s+/g, '')).value) + 1;
+            fortifyArmies--;
+            players[playerTurn].owns[rand].armies++; 
+            if(fortifyArmies == 0)
+            {
+                document.getElementById("turnPhase").innerHTML = "Attack";
+                document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+                document.getElementById("troopNum").style.visibility = "hidden";
+                document.getElementById("endTurn").style.visibility = "visible";
+                document.getElementById("randomAssigns").style.visibility = "hidden";
+                turnPhase = "attack"
+            }
+        }
+    }
+}
+function assignCountries()
+{
+    if(parseInt(document.getElementById("select").value) == 3)
+    {
+        players.push({name: "", number: 3, owns:["D"], color: "green"})
+
+    }//if statement end push players 3,4
+    if(parseInt(document.getElementById("select").value) == 4)
+    {
+        players.push({name: "", number: 3, owns:["D"], color: "green"});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta"})
+    }// if statement push players 3,4
+    if(parseInt(document.getElementById("select").value) == 5)
+    {
+        players.push({name: "", number: 3, owns:["D"], color: "green"});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
+        players.push({name: "", number: 5, owns:["D"], color: "black"})
+    }
+     if(parseInt(document.getElementById("select").value) == 6)
+    {
+        players.push({name: "", number: 3, owns:["D"], color: "green"});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
+        players.push({name: "", number: 5, owns:["D"], color: "black"});
+        players.push({name: "", number: 6, owns:["D"], color: "white"})
+    }
+    document.getElementById("playGame").style.visibility = "hidden";
+    document.getElementById("select").style.visibility =  "hidden";
+    document.getElementById("textSelect").style.visibility =  "hidden";
+    document.getElementById("playerTurnID").style.visibility = "visible";
+    document.getElementById("numTroopsRemaining").style.visibility = "visible";
+    document.getElementById("troopNum").style.visibility = "visible";
+    document.getElementById("restart").style.visibility = "visible";
+    document.getElementById("turnPhase").style.visibility = "visible";
+    document.getElementById("randomAssigns").style.visibility = "visible";
+    document.getElementById("turnPhase").innerHTML = "Intial Fortification";
+    var numPlayers = document.getElementById("select").value;
+	var countries2 = JSON.parse(JSON.stringify(countries));
+	var counter = 0;
+	while(countries2.length>0)
+	{
+		var rand = Math.floor(Math.random()*countries2.length);
+		var splicer = countries2.splice(rand, 1)[0];
+		var ownObject = {name: splicer, armies: 1};
+		players[counter].owns.push(ownObject);
+		document.getElementById(splicer.replace(/\s+/g, '')).style.color = players[counter].color;
+		document.getElementById(splicer.replace(/\s+/g, '')).style.visibility = "visible";
+		if(counter == players.length - 1)
+		{
+			counter = 0
+		}//counter player length
+		else
+		{
+			counter++
+		}//counter player length
+		
+	}  // End while loop
+	playerTurn = counter;
+	document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+	document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+	for (var z=0; z<players.length; z++)
+	{
+	    players[z].owns.shift()
+	}  // End for remove "D"s
+	for (var y=0; y<players.length; y++)
+	{
+	    var originalArmies = 0;
+	    for (var x=0; x<players[y].owns.length; x++)
+	    {
+	        originalArmies = originalArmies + players[y].owns[x].armies
+	    }  // End Inner for loop
+	    remainingArmies[y] = startingArmies[players.length] - originalArmies 
+	}// End players for loop
+	document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+	turnPhase = "initialFortify"
+}//end of assignCountry
+function testing(){
+    var t = players[0].owns.length-1;
+    while(t>=0){
+        players[0].owns[t].armies = 1;
+        document.getElementById(players[0].owns[t].name.replace(/\s+/g, '')).value = 1;
+        t--;
+    }
+    var t1 = players[1].owns.length-1;
+    while(t1>=0){
+        players[1].owns[t1].armies = 100;
+        document.getElementById(players[1].owns[t1].name.replace(/\s+/g, '')).value = 100;
+        t1--;
+    }
+}
+
+</script>
+
+<body>
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1"></a></h4>
+    </div>
+    <div id="collapseOne1" class="panel-collapse collapse in">
+    	<div id = "map" width="728" height="408" align="left">
+      		<img src="riskmapresized.png" width="728" height="408" alt="" />
+      		<div id=IcelandArmies class=Iceland_armies > </div>
+      		    
+     		<!--<input type="button" id="Iceland" class = "Iceland" value="1"/>-->
+     		<!--<input type="button" id="Yakutsk" class = "Yakutsk" value="1"/>-->
+     		<input type="button" id="Afghanistan" class = "Afghanistan" onClick="countryButton('Afghanistan')" value="1"/>
+            <input type="button" id="Alaska" class = "Alaska" onClick="countryButton('Alaska')" value="1" />
+            <input type="button" id="Alberta" class = "Alberta" onClick="countryButton('Alberta')" value="1" />
+            <input type="button" id="Argentina" class = "Argentina" onClick="countryButton('Argentina')" value="1" />
+            <input type="button" id="Brazil" class = "Brazil" onClick="countryButton('Brazil')" value="1" />
+            <input type="button" id="Britain" class = "Britain" onClick="countryButton('Britain')" value="1"/>
+            <input type="button" id="China" class = "China" onClick="countryButton('China')" value="1"/>
+            <input type="button" id="Congo" class = "Congo" onClick="countryButton('Congo')" value="1"/>
+            <input type="button" id="CtrlAmerica" class = "CtrlAmerica" onClick="countryButton('Ctrl America')" value="1"/>
+            <input type="button" id="EAfrica" class = "EAfrica" onClick="countryButton('E Africa')" value="1"/>
+            <input type="button" id="EAustralia" class = "EAustralia" onClick="countryButton('E Australia')" value="1"/>
+            <input type="button" id="EasternUS" class = "EasternUS" onClick="countryButton('Eastern US')" value="1"/>
+            <input type="button" id="Egypt" class = "Egypt" onClick="countryButton('Egypt')" value="1"/>
+            <input type="button" id="Greenland" class = "Greenland" onClick="countryButton('Greenland')" value="1"/>
+            <input type="button" id="Iceland" class = "Iceland" onClick="countryButton('Iceland')" value="1"/>
+            <input type="button" id="India" class = "India" onClick="countryButton('India')" value="1"/>
+            <input type="button" id="Indonesia" class = "Indonesia" onClick="countryButton('Indonesia')" value="1"/>
+            <input type="button" id="Irkutsk" class = "Irkutsk" onClick="countryButton('Irkutsk')" value="1"/>
+            <input type="button" id="Japan" class = "Japan" onClick="countryButton('Japan')" value="1"/>
+            <input type="button" id="Kamchatka" class = "Kamchatka" onClick="countryButton('Kamchatka')" value="1"/>
+            <input type="button" id="Madagascar" class = "Madagascar" onClick="countryButton('Madagascar')" value="1"/>
+            <input type="button" id="Mideast" class = "Mideast" onClick="countryButton('Mideast')" value="1"/>
+            <input type="button" id="Mongolia" class = "Mongolia" onClick="countryButton('Mongolia')" value="1"/>
+            <input type="button" id="NAfrica" class = "NAfrica" onClick="countryButton('N Africa')" value="1"/>
+            <input type="button" id="NEurope" class = "NEurope" onClick="countryButton('N Europe')" value="1"/>
+            <input type="button" id="NewGuinea" class = "NewGuinea" onClick="countryButton('New Guinea')" value="1"/>
+            <input type="button" id="NWTerritory" class = "NWTerritory" onClick="countryButton('NW Territory')" value="1"/>
+            <input type="button" id="Ontario" class = "Ontario" onClick="countryButton('Ontario')" value="1"/>
+            <input type="button" id="Peru" class = "Peru" onClick="countryButton('Peru')" value="1"/>
+            <input type="button" id="Quebec" class = "Quebec" onClick="countryButton('Quebec')" value="1"/>
+            <input type="button" id="SAfrica" class = "SAfrica" onClick="countryButton('S Africa')" value="1"/>
+            <input type="button" id="SEurope" class = "SEurope" onClick="countryButton('S Europe')" value="1"/>
+            <input type="button" id="Scandinavia" class = "Scandinavia" onClick="countryButton('Scandinavia')" value="1"/>
+            <input type="button" id="Siam" class = "Siam" onClick="countryButton('Siam')" value="1"/>
+            <input type="button" id="Siberia" class = "Siberia" onClick="countryButton('Siberia')" value="1"/>
+            <input type="button" id="Ukraine" class = "Ukraine" onClick="countryButton('Ukraine')" value="1"/>
+            <input type="button" id="Ural" class = "Ural" onClick="countryButton('Ural')" value="1"/>
+            <input type="button" id="Venezuela" class = "Venezuela" onClick="countryButton('Venezuela')" value="1"/>
+            <input type="button" id="WAustralia" class = "WAustralia" onClick="countryButton('W Australia')" value="1"/>
+            <input type="button" id="WEurope" class = "WEurope" onClick="countryButton('W Europe')" value="1"/>
+            <input type="button" id="WesternUS" class = "WesternUS" onClick="countryButton('Western US')" value="1"/>
+            <input type="button" id="Yakutsk" class = "Yakutsk" onClick="countryButton('Yakutsk')" value="1"/>
+            <h5 id="playerTurnID" class = "playerTurnID">Player Turn: 1</h5>
+            <h6 id="numTroopsRemaining" class = "numTroopsRemaining">Number of Troops Remaining: 0</h6>
+            <h7 id="attackingCountry" class="attackingCountry">Country</h7>
+            <h8 id = "isAttacking" class="isAttacking">is attacking</h8>
+            <h9 id="defendingCountry" class="defendingCountry">Country</h9>
+            <h10 id="attackingTroops" class = "attackingTroops">0</h10>
+            <h11 id="defendingTroops" class="defendingTroops">0</h11>
+            <h12 id="turnPhase" class= "turnPhase"></h12>
+            <input type="button" class="undoButton" id="undoButton" value= "Undo" onClick= "undo()"/>
+            <form class = "troopNum" id="troopNum"></form>
+            <input type="button" id = "endTurn" class = "endTurn" value="End Turn" onClick = "endTurn()">
+            <input type="button" id="attackControlled" class="attackControlled" onClick= "callAttackbutton()" value= "Attack"></input>
+            <input type= "button" id="attack20" class = "attack20" onClick = "attack20()" value = "Attack 2.0"></input>
+            <label for="select" id="numberTroopsAttacking" class = "numberTroopsAttacking">with</label>
+            <select name="select2" id="select2" class="select2"><option value = "3">3</option></option><option value = "2">2</option><option value = "1">1</option></option></select>
+     		</form>
+     	</div>
+      <input onClick="assignCountries()" type="button" name="playGame" class="playGame" id="playGame" value="Play Risk">
+      <input type = "button" id="randomAssigns" class="randomAssigns" onClick = "randomAssign()" value="Random Assigns"></input>
+      <label for="select" id="textSelect" class="textSelect">Players:</label>
+      <select name="select" id="select"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+      </select>
+      <input type = "button" id="restart" class = "restart" onClick = "restart()" value = "Restart Game"/>
+      <div class="panel-body"></div>
+      &nbsp;</div>
+    </div>
+  </div>
