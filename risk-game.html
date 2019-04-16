@@ -1066,8 +1066,8 @@
             <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1"></a></h4>
         </div>
         <div id="collapseOne1" class="panel-collapse collapse in">
-            <div id="map" width="728" height="408" align="left">
-                <img src="riskmapresized.png" width="728" height="408" alt=""/>
+            <div id="map">
+                <img src="riskmapresized.png" alt=""/>
                 <div id=IcelandArmies class=Iceland_armies></div>
 
                 <!--<input type="button" id="Iceland" class = "Iceland" value="1"/>-->
@@ -1123,31 +1123,29 @@
                 <input type="button" id="Yakutsk" class="Yakutsk" onClick="countryButton('Yakutsk')" value="1"/>
                 <h5 id="playerTurnID" class="playerTurnID">Player Turn: 1</h5>
                 <h6 id="numTroopsRemaining" class="numTroopsRemaining">Number of Troops Remaining: 0</h6>
-                <h7 id="attackingCountry" class="attackingCountry">Country</h7>
-                <h8 id="isAttacking" class="isAttacking">is attacking</h8>
-                <h9 id="defendingCountry" class="defendingCountry">Country</h9>
-                <h10 id="attackingTroops" class="attackingTroops">0</h10>
-                <h11 id="defendingTroops" class="defendingTroops">0</h11>
-                <h12 id="turnPhase" class="turnPhase"></h12>
+                <p id="attackingCountry" class="attackingCountry">Country</p>
+                <p id="isAttacking" class="isAttacking">is attacking</p>
+                <p id="defendingCountry" class="defendingCountry">Country</p>
+                <p id="attackingTroops" class="attackingTroops">0</p>
+                <p id="defendingTroops" class="defendingTroops">0</p>
+                <p id="turnPhase" class="turnPhase"></p>
                 <input type="button" class="undoButton" id="undoButton" value="Undo" onClick="undo()"/>
                 <form class="troopNum" id="troopNum"></form>
                 <input type="button" id="endTurn" class="endTurn" value="End Turn" onClick="endTurn()">
                 <input type="button" id="attackControlled" class="attackControlled" onClick="callAttackbutton()"
-                       value="Attack"></input>
-                <input type="button" id="attack20" class="attack20" onClick="attack20()" value="Attack 2.0"></input>
+                       value="Attack"/>
+                <input type="button" id="attack20" class="attack20" onClick="attack20()" value="Attack 2.0"/>
                 <label for="select" id="numberTroopsAttacking" class="numberTroopsAttacking">with</label>
-                <select name="select2" id="select2" class="select2">
+                <label for="select2"></label><select name="select2" id="select2" class="select2">
                     <option value="3">3</option>
-                    </option>
                     <option value="2">2</option>
                     <option value="1">1</option>
-                    </option></select>
-                </form>
+            </select>
             </div>
             <input onClick="assignCountries()" type="button" name="playGame" class="playGame" id="playGame"
                    value="Play Risk">
             <input type="button" id="randomAssigns" class="randomAssigns" onClick="randomAssign()"
-                   value="Random Assigns"></input>
+                   value="Random Assigns"/>
             <label for="select" id="textSelect" class="textSelect">Players:</label>
             <select name="select" id="select">
                 <option value="2">2</option>
@@ -1158,7 +1156,6 @@
             </select>
             <input type="button" id="restart" class="restart" onClick="restart()" value="Restart Game"/>
             <div class="panel-body"></div>
-            &nbsp;
         </div>
     </div>
-</div>
+</div></body>
