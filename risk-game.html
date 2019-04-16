@@ -5,25 +5,26 @@
     <meta charset="utf-8">
 
     <script>
-        var attackingCountry = {};
-        var defendingCountry = {};
-        var remainingArmies = [];
-        var playerTurn = 0;
-        var turnPhase = "fortify";
-        var fortifyArmies = 10;
-        var players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
+        let attackingCountry = {};
+        let defendingCountry = {};
+        let remainingArmies = [];
+        let playerTurn = 0;
+        let turnPhase = "fortify";
+        let fortifyArmies = 10;
+        let players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
             name: "",
             number: 2,
             owns: ["D"],
             color: "blue"
         }];
-        var continents = [{name: "N America", bonus: 5, cCount: 9},
+        const continents = [{name: "N America", bonus: 5, cCount: 9},
             {name: "Europe", bonus: 5, cCount: 7},
             {name: "Asia", bonus: 7, cCount: 12},
             {name: "S America", bonus: 2, cCount: 4},
             {name: "Africa", bonus: 3, cCount: 6},
             {name: "Australia", bonus: 2, cCount: 4}];
-        var countries = ["Afghanistan",
+        const countries = [
+            "Afghanistan",
             "Alaska",
             "Alberta",
             "Argentina",
@@ -65,14 +66,14 @@
             "W Europe",
             "Western US",
             "Yakutsk"];
-
-        var arrayCountries = [{
-            name: "Afghanistan",
-            attacks: ["Ural", "Ukraine", "Mideast", "India", "China"],
-            continent: "Asia",
-            xcoord: 387,
-            ycoord: 143
-        },
+        const arrayCountries = [
+            {
+                name: "Afghanistan",
+                attacks: ["Ural", "Ukraine", "Mideast", "India", "China"],
+                continent: "Asia",
+                xcoord: 387,
+                ycoord: 143
+            },
             {
                 name: "Alaska",
                 attacks: ["NW Territory", "Kamchatka", "Alberta"],
@@ -335,9 +336,10 @@
                 continent: "Asia",
                 xcoord: 478,
                 ycoord: 43
-            }];
+            }
+            ];
 
-        var startingArmies = [0, 0, 40, 35, 30, 30, 25]; //number of starting armies defined by # of players
+        const startingArmies = [0, 0, 40, 35, 30, 30, 25]; //number of starting armies defined by # of players
     </script>
 
     <script type="text/javascript" src="js/attack.js"></script>
