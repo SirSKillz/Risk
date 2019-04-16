@@ -7,10 +7,8 @@ function ownedCountryBonus(OwnedCount) {
 
 // Return true if the player clicked on a country they own
 function playerOwnedIndex(country, player) {
-    for(var i=0; i<players[player].owns.length; i++)
-    {
-        if(players[player].owns[i].name  == country)
-        {
+    for(let i = 0; i<players[player].owns.length; i++) {
+        if(players[player].owns[i].name  === country) {
             return i
         }
     }
@@ -18,34 +16,29 @@ function playerOwnedIndex(country, player) {
 
 // Select the pushed button
 function selectButton() {
-    var x = document.getElementById("select2").value;
-    return x
+    return document.getElementById("select2").value
 }
 
 // Interactions when clicking on a country
 function countryButton(country) {
-    if(turnPhase == "initialFortify")
-    {
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
-        {
+    if(turnPhase === "initialFortify") {
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) {
             /* TODO:   Disable radio buttons */
             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
             players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
-            if(playerTurn == players.length - 1)
-            {
+            if(playerTurn === players.length - 1) {
                 playerTurn = 0
 
             }
-            else
-            {
+            else {
                 playerTurn++
 
             }
             document.getElementById("playerTurnID").style.color = players[playerTurn].color;
             document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
-            if(remainingArmies.reduce(function(a,b){return a + b},0)==0)
+            if(remainingArmies.reduce(function(a,b){return a + b},0)===0)
             {
                 beginTurn();
                 document.getElementById("turnPhase").innerHTML = "Fortify";
@@ -55,9 +48,9 @@ function countryButton(country) {
             // *********TODO PLAYER TURN TEXT IN UPPER RIGHT CORNER
         }
     }//intialFortify end if statement
-    else if(turnPhase == "fortify")
+    else if(turnPhase === "fortify")
     {
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color)
         {
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
             //armies to start crap at begin = var fortifyArmies
@@ -68,7 +61,7 @@ function countryButton(country) {
                 fortifyArmies = fortifyArmies - 1
             }//fortifyArmies if statement end
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-            if(fortifyArmies == 0)
+            if(fortifyArmies === 0)
             {
                 document.getElementById("turnPhase").innerHTML = "Attack";
                 document.getElementById("numTroopsRemaining").style.visibility = "hidden";
@@ -80,10 +73,10 @@ function countryButton(country) {
 
         }//if statement end if color == player color
     }// else if statement for fortify end
-    else if(turnPhase == "attack")
+    else if(turnPhase === "attack")
     {
 
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color == players[playerTurn].color)
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color)
         {
             if(players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies > 1)
             {
@@ -105,18 +98,18 @@ function countryButton(country) {
             }//if statement for >1
         }//if color = end
     }//else if statement end attack
-    else if(turnPhase == "defend")
+    else if(turnPhase === "defend")
     {
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color != players[playerTurn].color)
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color !== players[playerTurn].color)
         {
-            for(var i = 0; i<players.length; i++)
+            for(let i = 0; i<players.length; i++)
             {
-                var found = findIndexInData(players[i].owns, "name", country);
-                if(found != -1)
+                const found = findIndexInData(players[i].owns, "name", country);
+                if(found !== -1)
                 {
-                    var numCountry = findIndexInData(arrayCountries, "name", attackingCountry.country);
-                    var attackFound = arrayCountries[numCountry].attacks.indexOf(country);
-                    if(attackFound != -1)
+                    const numCountry = findIndexInData(arrayCountries, "name", attackingCountry.country);
+                    const attackFound = arrayCountries[numCountry].attacks.indexOf(country);
+                    if(attackFound !== -1)
                     {
                         defendingCountry.country = country;
                         defendingCountry.armies = players[i].owns[found].armies;

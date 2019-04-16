@@ -2,43 +2,33 @@
 
 // Number of troops at the beginning of the turn
 function beginTurn() {
-    fortifyArmies = 0;
     fortifyArmies = ownedCountryBonus(players[playerTurn].owns.length);
-    for(var i=0; i<continents.length; i++)
-    {
-        var contName = continents[i].name;
-        var bonus = continents[i].bonus;
-        var cCount = continents[i].cCount;
-        for(var z= 0; z<players[playerTurn].owns.length; z++)
-        {
-            var countryGrap = players[playerTurn].owns[z].name;
-            for(var w=0; w<arrayCountries.length; w++)
-            {
-                if(arrayCountries[w].name == countryGrap)
-                {
-                    if(arrayCountries[w].continent == contName)
-                    {
+    for(let i = 0; i < continents.length; i++) {
+        const contName = continents[i].name;
+        const bonus = continents[i].bonus;
+        let cCount = continents[i].cCount;
+        for(let z = 0; z < players[playerTurn].owns.length; z++) {
+            const countryGrap = players[playerTurn].owns[z].name;
+            for(let w = 0; w < arrayCountries.length; w++) {
+                if(arrayCountries[w].name === countryGrap) {
+                    if(arrayCountries[w].continent === contName) {
                         cCount= cCount-1
-                    }//if statement for CCount
-                }//if statement for this crap is done
-            }//country done loop
-        }//for loop own countries end
-        if (cCount == 0)
-        {
-            fortifyArmies = fortifyArmies+ bonus;
+                    }
+                }
+            }
+        }
+        if (cCount === 0) {
+            fortifyArmies =+ bonus;
             alert(contName)
-        }//if cCount done
-    }//end continents for loop
+        }
+    }
 }
 
 // Executes when a player ends their turn
 function endTurn() {
-    if(playerTurn == players.length - 1)
-    {
+    if(playerTurn === players.length - 1) {
         playerTurn = 0
-    }//counter player length
-    else
-    {
+    } else {
         playerTurn++
     }
     defendingCountry = {};
