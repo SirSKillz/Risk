@@ -1,13 +1,18 @@
 
+const express = require('express');
+//const path = require('path');
 const http = require('http');
+const socketIO = require('socket.io');
 
-const server = http.createServer((req, res)=> {
-    if(req.url == '/') {
-        res.write('we in this bitch');
-        res.end();
-    };
+let risk = express();
+let server = http.Server(risk);
+let sockets = socketIO(server);
+
+risk.get('/', (req, res) => {
+    res.write('we in this bitch');
+    res.end();
 });
 
 server.listen(63334);
 
-console.log('listening on port 3000');
+console.log('listening on port 63334');
