@@ -1,0 +1,24 @@
+body {
+    background: black;
+}
+
+h1 {
+    color: red;
+    font-size: 60px;
+}
+
+.top {
+    height: %;
+    background: grey;
+    width: 100%;
+}
+
+nav {
+
+}
+
+.center {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
