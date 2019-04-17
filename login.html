@@ -19,12 +19,13 @@
             <img src="img/dice.png" id="icon" alt="User Icon" />
         </div>
 
+        <div type="text" id="errMsg" class="errorMsg">Bad Login</div>
         <!-- Login Form -->
         <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" required>
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password" required>
-            <input type="submit" class="fadeIn fourth" value="Log In ">
-            <input type="submit" id="register" class="fadeIn fourth" value="Register">
+            <input type="text" id="username" class="fadeIn second" name="login" placeholder="Login" required>
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" required>
+            <input type="button" id="logon" class="fadeIn fourth" value="Log In " onclick="sendLoginData()">
+            <input type="button" id="register" class="fadeIn fourth" value="Register" onclick="sendRegisterData()">
         </form>
 
     </div>
