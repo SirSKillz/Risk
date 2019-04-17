@@ -5,7 +5,7 @@ function restart() {
     location.reload();
 }
 
-// No clue
+// Find index for the country within player data ?????
 function findIndexInData(data, property, value) {
     let result = -1;
     data.some(function (item, i) {
@@ -17,7 +17,7 @@ function findIndexInData(data, property, value) {
     return result;
 }
 
-// Undo the last attack
+// Undo misclicks for attacking not actual attack
 function undo() {
     defendingCountry = {};
     attackingCountry = {};
@@ -34,7 +34,7 @@ function undo() {
     document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
 }
 
-// Randomly assigns
+// Randomly assigns troops
 function randomAssign() {
     let rand;
     let temp;
@@ -93,7 +93,7 @@ function randomAssign() {
     }
 }
 
-// Assign a country to the player that selected the country
+// randomly assigns players their countries
 function assignCountries() {
     if(parseInt(document.getElementById("select").value) === 3) {
         players.push({name: "", number: 3, owns:["D"], color: "green"})
@@ -155,3 +155,4 @@ function assignCountries() {
     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
     turnPhase = "initialFortify"
 }
+//control shift k
