@@ -1,18 +1,25 @@
 
-const express = require('express');
+const risk = require('express')();
 //const path = require('path');
-const http = require('http');
-const socketIO = require('socket.io');
+const server = require('http').createServer(risk);
+const socket = require('socket.io')(server);
+const fs = require('fs');
 
-let risk = express();
-let server = http.Server(risk);
-let sockets = socketIO(server);
+
+//risk.use(express.static(__dirname + '/node_modules'));
 
 risk.get('/', (req, res) => {
-    res.write('we in this bitch');
+    console.log('we in here');
+    res.writeHead(200, {"Content-type" : "text/css"});
+    let fileContents = fs.readFileSync('../css/login.css', {encoding: "utf8"});
+    res.write(fileContents);
     res.end();
 });
 
-server.listen(63334);
+socket.on('connection', (data) =>{
+    console.log('client connected');
+});
 
+
+server.listen(63334);
 console.log('listening on port 63334');

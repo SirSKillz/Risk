@@ -16,7 +16,7 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="img/dice.png" id="icon" alt="User Icon" />
+            <img src="/img/dice.png" id="icon" alt="User Icon" />
         </div>
 
         <div type="text" id="errMsg" class="errorMsg">Bad Login</div>
@@ -32,3 +32,10 @@
 </div>
 </body>
 </html>
+
+
+
+<script>
+    const io = require('socket.io');
+    let socket = io('localhost:63334');
+</script>
