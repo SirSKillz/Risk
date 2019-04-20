@@ -6,55 +6,15 @@
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="css/login.css">
-
-
-    <!--        function sendLoginData() {-->
-    <!--            const logEl = document.getElementById("username").value;-->
-    <!--            const passEl = document.getElementById("password").value;-->
-    <!--            console.log(logEl, passEl);-->
-    <!--            onConfirmation();-->
-    <!--        }-->
-
-    <!--        function sendRegisterData() {-->
-    <!--            const logEl = document.getElementById("username").value;-->
-    <!--            const passEl = document.getElementById("password").value;-->
-    <!--            console.log(logEl, passEl);-->
-    <!--            onFailure();-->
-    <!--        }-->
-    <script>
-    function onConfirmation() {
-        //socket.emit('loadGame', 'risk-game.html');
-        window.location.href = "risk-game.html";
-    }
-    </script>
-
-    <!--        function onFailure() {-->
-    <!--            document.getElementById("errMsg").style.display = "block";-->
-    <!--        }-->
-
-    <!--        // Hide the login error message if the user clicks anywhere-->
-    <!--        let clicks = 0;-->
-    <!--        document.onclick = function () {-->
-    <!--            // Check if the error message is available-->
-    <!--            if (document.getElementById("errMsg").offsetParent !== null) {-->
-    <!--                if (clicks > 0) {-->
-    <!--                    document.getElementById("errMsg").style.display = "none";-->
-    <!--                    clicks = 0;-->
-    <!--                } else {-->
-    <!--                    clicks++;-->
-    <!--                }-->
-    <!--            }-->
-    <!--        };-->
-
-<!--    <script type="text/javascript" src="js/login.js"></script>-->
-<!--    <link rel="stylesheet" type="text/css" href="css/login.css">-->
-
 </head>
 <body>
 <script>
-    var socket = io.connect();
-</script>
+    let socket = io.connect();
 
+    socket.on("goodLogin", function () {
+        document.location.href = "risk-game.html";
+    });
+</script>
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->

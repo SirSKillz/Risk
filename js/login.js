@@ -1,8 +1,9 @@
 function sendLoginData() {
     const logEl = document.getElementById("username").value;
     const passEl = document.getElementById("password").value;
-    console.log(logEl, passEl);
-    onConfirmation();
+    //console.log(logEl, passEl);
+    socket.emit("loginRequest", logEl, passEl);
+    //onConfirmation();
 }
 
 function sendRegisterData() {
@@ -33,5 +34,3 @@ document.onclick = function () {
         }
     }
 };
-
-

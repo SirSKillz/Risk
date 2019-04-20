@@ -1,8 +1,7 @@
-//let server = require('express')();
-let http = require('http');
-//let io = require('socket.io')(http);
-let url = require('url');
-let fs = require('fs');
+const http = require('http');
+const url = require('url');
+const fs = require('fs');
+const sql = require('sqlite3');
 
 
 server = http.createServer(function(req, res){
@@ -85,5 +84,13 @@ io.sockets.on('connection', function(socket){
     //recieve client data
     socket.on('restart', function(data){
         console.log("Trying to restart");
+    });
+
+    socket.on('loginRequest', function(user, pass){
+        console.log("Get login", user, pass);
+        if (user === "ryan" && pass === "123") {
+            console.log("Good login");
+            socket.emit('goodLogin');
+        }
     });
 });
