@@ -83,7 +83,7 @@ io.sockets.on('connection', function(socket){
     }, 1000);
 
     //recieve client data
-    socket.on('client_data', function(data){
-        process.stdout.write(data.letter);
+    socket.on('restart', function(data){
+        console.log("Trying to restart");
     });
 });
