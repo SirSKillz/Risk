@@ -1,11 +1,15 @@
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
-var server;
+//let server = require('express')();
+let http = require('http');
+//let io = require('socket.io')(http);
+let url = require('url');
+let fs = require('fs');
+
+
+
 
 server = http.createServer(function(req, res){
     // your normal server code
-    var path = url.parse(req.url).pathname;
+    let path = url.parse(req.url).pathname;
     console.log(path);
     switch (path){
         case '/':
@@ -23,6 +27,86 @@ server = http.createServer(function(req, res){
                 res.end();
             });
             break;
+        case '/risk-game.html':
+            fs.readFile('..' + path, function(err, data){
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/css/default.css':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/css'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/js/attack.js':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/javascript'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/js/core.js':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/javascript'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/js/interaction.js':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/javascript'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/js/turn.js':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/javascript'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/img/riskmapresized.png':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'image/png'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
+        case '/img/dice.png':
+            fs.readFile('..' + path, function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'image/png'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
         default: send404(res);
     }
 }),
@@ -36,7 +120,7 @@ server = http.createServer(function(req, res){
 server.listen(8001);
 
 // use socket.io
-var io = require('socket.io').listen(server);
+let io = require('socket.io').listen(server);
 
 // define interactions with client
 io.sockets.on('connection', function(socket){
