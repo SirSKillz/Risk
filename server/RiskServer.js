@@ -5,39 +5,20 @@ let url = require('url');
 let fs = require('fs');
 
 
-
-
 server = http.createServer(function(req, res){
     // your normal server code
     let path = url.parse(req.url).pathname;
-    console.log(path);
-    switch (path){
+    //console.log("Old path " + path);
+    let pathTemp = path.substr(0,2);
+    //console.log("New path " + pathTemp);
+    switch (pathTemp) {
         case '/':
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write('<h1>Hello! Try the <a href="/login.html">Test page</a></h1>');
             res.end();
             break;
-        case '/login.html':
-            fs.readFile('..' + path, function(err, data){
-                if (err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/risk-game.html':
-            fs.readFile('..' + path, function(err, data){
-                if(err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/css/default.css':
+        case '/c':
+            // Should be a CSS file
             fs.readFile('..' + path, function (err, data) {
                 if(err){
                     return send404(res);
@@ -47,47 +28,8 @@ server = http.createServer(function(req, res){
                 res.end();
             });
             break;
-        case '/js/attack.js':
-            fs.readFile('..' + path, function (err, data) {
-                if(err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type' : 'text/javascript'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/js/core.js':
-            fs.readFile('..' + path, function (err, data) {
-                if(err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type' : 'text/javascript'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/js/interaction.js':
-            fs.readFile('..' + path, function (err, data) {
-                if(err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type' : 'text/javascript'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/js/turn.js':
-            fs.readFile('..' + path, function (err, data) {
-                if(err){
-                    return send404(res);
-                }
-                res.writeHead(200, {'Content-Type' : 'text/javascript'});
-                res.write(data, 'utf8');
-                res.end();
-            });
-            break;
-        case '/img/riskmapresized.png':
+        case '/i':
+            // Should be a png
             fs.readFile('..' + path, function (err, data) {
                 if(err){
                     return send404(res);
@@ -97,25 +39,35 @@ server = http.createServer(function(req, res){
                 res.end();
             });
             break;
-        case '/img/dice.png':
+        case '/j':
             fs.readFile('..' + path, function (err, data) {
                 if(err){
                     return send404(res);
                 }
-                res.writeHead(200, {'Content-Type' : 'image/png'});
+                res.writeHead(200, {'Content-Type' : 'text/javascript'});
                 res.write(data, 'utf8');
                 res.end();
             });
             break;
-        default: send404(res);
+        default:
+            // Not a CSS, JS, or IMG file
+            fs.readFile('..' + path, function(err, data){
+                if (err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'});
+                res.write(data, 'utf8');
+                res.end();
+            });
+            break;
     }
-}),
+});
 
-    send404 = function(res){
-        res.writeHead(404);
-        res.write('404');
-        res.end();
-    };
+function send404(res) {
+    res.writeHead(404);
+    res.write('404');
+    res.end()
+}
 
 server.listen(8001);
 
