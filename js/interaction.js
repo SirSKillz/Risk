@@ -1,6 +1,6 @@
 // Functions for interacting with the board
 
-// Return country army bonus
+// Return country owned bonus so the number of countries divided by 3
 function ownedCountryBonus(OwnedCount) {
     return Math.max(3, Math.floor(OwnedCount/3))
 }
@@ -21,9 +21,11 @@ function selectButton() {
 
 // Interactions when clicking on a country
 function countryButton(country) {
+    //if turnPhase is initialFortify
     if(turnPhase === "initialFortify") {
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) {
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) { //if they cown the country
             /* TODO:   Disable radio buttons */
+            //add one army
             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
             players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
@@ -38,6 +40,7 @@ function countryButton(country) {
             document.getElementById("playerTurnID").style.color = players[playerTurn].color;
             document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+            //start the first round
             if(remainingArmies.reduce(function(a,b){return a + b},0)===0)
             {
                 beginTurn();
@@ -49,6 +52,7 @@ function countryButton(country) {
         }
     }//intialFortify end if statement
     else if(turnPhase === "fortify")
+    //if turnPhase is fortify
     {
         if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color)
         {

@@ -1,0 +1,10 @@
+{
+  "name": "Risk",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "socket.io": "^2.2.0"
+  }
+}
