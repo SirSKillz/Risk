@@ -13,6 +13,7 @@
 
     socket.on("goodLogin", function () {
         document.location.href = "risk-game.html";
+        socket.close();
     });
 </script>
 <div class="wrapper fadeInDown">

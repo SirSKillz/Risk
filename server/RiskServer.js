@@ -1,7 +1,7 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const sql = require('sqlite3');
+//const sql = require('sqlite3');
 
 
 server = http.createServer(function(req, res){
@@ -88,7 +88,7 @@ io.sockets.on('connection', function(socket){
 
     socket.on('loginRequest', function(user, pass){
         console.log("Get login", user, pass);
-        if (user === "ryan" && pass === "123") {
+        if ((user === "ryan" && pass === "123") || (user === "noah" && pass === "123"))  {
             console.log("Good login");
             socket.emit('goodLogin');
         }
