@@ -142,7 +142,7 @@ function assignCountries() {
             counter++
         }
     }
-    playerTurn = counter;
+    playerTurn = 0;
     document.getElementById("playerTurnID").style.color = players[playerTurn].color;
     document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
     for (let z = 0; z < players.length; z++) {

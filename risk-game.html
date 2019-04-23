@@ -410,11 +410,31 @@
         for(let i = 0; i< playersDup.length; i++){
             players[playersDup[i].number-1] = playersDup[i];
         }
+        playerTurn = 0;
+        for(let i = 0; i<players.length; i++){
+            for(let j = 0; j<players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
+            }
+        }
+        beginTurn();
+        document.getElementById("turnPhase").innerHTML = "Fortify";
+        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+        turnPhase = "fortify"
         socket.emit('finalInitialFort', players);
     })
 
     socket.on('finalInitialFort', function(playersFromOtherGame){
         players = playersFromOtherGame;
+        playerTurn = 0;
+        for(let i = 0; i<players.length; i++){
+            for(let j = 0; j<players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
+            }
+        }
+        beginTurn();
+        document.getElementById("turnPhase").innerHTML = "Fortify";
+        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+        turnPhase = "fortify"
     })
 
 </script>
