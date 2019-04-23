@@ -352,7 +352,16 @@
 
 <body>
 <script>
+    let ID;
     let socket = io.connect();
+    socket.emit('room');
+
+    socket.on("start", function(num) {
+        //console.log(num);
+        //socket.emit('fuck you');
+        ID = num;
+    });
+
 </script>
 <script type="text/javascript" src="js/core.js"></script>
 

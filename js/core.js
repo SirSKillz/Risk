@@ -1,9 +1,9 @@
 // Provides the core functionality of the game
 // Restarts the game
 function restart() {
-    console.log("Restarting");
+    //console.log("Restarting");
     location.reload();
-    socket.emit("restart")
+    socket.emit("restart", ID);
 }
 
 // Find index for the country within player data ?????
@@ -96,6 +96,7 @@ function randomAssign() {
 
 // randomly assigns players their countries
 function assignCountries() {
+    socket.emit('start', 4);
     if(parseInt(document.getElementById("select").value) === 3) {
         players.push({name: "", number: 3, owns:["D"], color: "green"})
 
