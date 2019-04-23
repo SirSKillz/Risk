@@ -10,20 +10,20 @@
 <script>
     let socket = io.connect();
 
-    socket.on("goodLogin", function (err) {
+    socket.on("goodLogin", function () {
         onConfirmation();
     });
-    socket.on("badLogin", function (err) {
+    socket.on("badLogin", function () {
         onFailure();
     });
-    socket.on("registerSuccess", function (err) {
+    socket.on("registerSuccess", function () {
         onConfirmation();
     });
-    socket.on("usernameTaken", function (err) {
+    socket.on("usernameTaken", function () {
         onFailure();
     });
 </script>
-<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/login.js">
 
     socket.on("goodLogin", function () {
         document.location.href = "risk-game.html";
