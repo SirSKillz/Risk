@@ -134,7 +134,7 @@ io.sockets.on('connection', function(socket){
         socket.to('game 1').emit('start', 4);
     })
 
-    socket.on('realstart', function(players) {
-        socket.to('game 1').emit('realstart', players, game1);
+    socket.on('realstart', function(players, remainingArmies) {
+        socket.to('game 1').emit('realstart', players, game1, remainingArmies);
     })
 });

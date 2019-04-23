@@ -363,13 +363,33 @@
         ID = num;
     });
 
-    socket.on("realstart", function(playersFromOtherGame, game1){
+    socket.on("realstart", function(playersFromOtherGame, game1, remainingArmiesFromOtherGame){
         for(let i = 0; i<game1.length; i++){
             if(socket.id === game1[i]){
                 userTurn = i;
             }
         }
-       players = playersFromOtherGame;
+        players = playersFromOtherGame;
+        remainingArmies = remainingArmiesFromOtherGame;
+        playerTurn = userTurn;
+        document.getElementById("playGame").style.visibility = "hidden";
+        document.getElementById("select").style.visibility =  "hidden";
+        document.getElementById("textSelect").style.visibility =  "hidden";
+        document.getElementById("playerTurnID").style.visibility = "visible";
+        document.getElementById("numTroopsRemaining").style.visibility = "visible";
+        document.getElementById("troopNum").style.visibility = "visible";
+        document.getElementById("restart").style.visibility = "visible";
+        document.getElementById("turnPhase").style.visibility = "visible";
+        document.getElementById("randomAssigns").style.visibility = "visible";
+        document.getElementById("turnPhase").innerHTML = "Intial Fortification";
+        document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+        for(let i = 0; i<players.length; i++){
+            for(let j = 0; j<players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.color = players[i].color;
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.visibility = "visible";
+            }
+        }
     });
 
 </script>
