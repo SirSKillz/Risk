@@ -15,6 +15,8 @@
         let playerTurn = 0;
         let userTurn = 0;
         let turnPhase = "fortify";
+        let moveFrom = [];
+        let moveToo;
         let fortifyArmies = 10;
         let playersDup = [];
         let players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
@@ -484,15 +486,56 @@
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
             }
         }
+
     })
 
     socket.on('moveTroops1', function () {
         document.getElementById("turnPhase").innerHTML = "MoveTroops";
     })
 
+    socket.on('moveTroopsEnd', function(playersFromOtherGame, playerTurnFromOtherGame){
+        players = playersFromOtherGame;
+        for (let i = 0; i < players.length; i++) {
+            for (let j = 0; j < players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
+            }
+        }
+        if(playerTurnFromOtherGame === players.length){
+            playerTurn = 0;
+        }
+        else{
+            playerTurn = playerTurnFromOtherGame+1;
+        }
+        if (userTurn === playerTurn) {
+            beginTurn();
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+            document.getElementById("numTroopsRemaining").style.visibility = "visible";
+            document.getElementById("troopNum").style.visibility = "visible";
+            document.getElementById("restart").style.visibility = "visible";
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("randomAssigns").style.visibility = "visible";
+            document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+            document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+            turnPhase = "fortify"
+        }
+        else{
+            turnPhase = "BULLSHIT"
+            document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+            document.getElementById("troopNum").style.visibility = "hidden";
+            document.getElementById("restart").style.visibility = "hidden";
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("randomAssigns").style.visibility = "hidden";
+            document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+            document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+        }
+
+    })
+
     socket.on('playerElimination', function (eliminated) {
         alert("Player " + eliminated + " has been eliminated")
     })
+
 </script>
 <script type="text/javascript" src="js/core.js"></script>
 

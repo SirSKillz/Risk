@@ -184,4 +184,8 @@ io.sockets.on('connection', function(socket){
     socket.on('moveTroops1', function(){
         socket.to('game 1').emit('moveTroops1');
     })
+
+    socket.on('moveTroopsEnd', function (players, playerTurn){
+       socket.to('game 1').emit('moveTroopsEnd', players, playerTurn);
+    });
 });

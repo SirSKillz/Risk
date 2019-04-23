@@ -43,7 +43,7 @@ function endTurn() {
     // document.getElementById("select2").style.visibility = "hidden";
     // document.getElementById("attack20").style.visibility = "hidden";
     // document.getElementById("numberTroopsAttacking").style.visibility = "hidden";
-    // document.getElementById("endTurn").style.visibility = "hidden";
+    document.getElementById("endTurn").style.visibility = "hidden";
     // beginTurn();
     // document.getElementById("randomAssigns").style.visibility = "visible";
     // document.getElementById("playerTurnID").style.visibility = "visible";
@@ -53,6 +53,6 @@ function endTurn() {
     // document.getElementById("numTroopsRemaining").style.visibility = "visible";
     // document.getElementById("turnPhase").innerHTML = "Fortify";
     // turnPhase = "fortify"
-    turnPhase = "MoveTroops"
+    turnPhase = "moveTroops"
     socket.emit('moveTroops1');
 }

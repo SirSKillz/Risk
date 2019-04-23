@@ -138,5 +138,71 @@ function countryButton(country) {
             }
         }//if color != to player color
     }//defend else if end
+    else if(turnPhase === "moveTroops"){
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color){
+            moveFrom.country = country;
+            moveFrom.attacks = [];
+            moveFrom.armies = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
+            for(let i = 0; i<arrayCountries.length; i++){
+                if(arrayCountries[i].name === country){
+                    for(let j = 0; j<arrayCountries[i].attacks.length; j++){
+                        moveFrom.attacks.push(arrayCountries[i].attacks[j]);
+                    }
+                }
+            }
+            document.getElementById("attackingCountry").innerHTML = country;
+            document.getElementById("attackingCountry").style.visibility = "visible";
+            document.getElementById("isAttacking").innerHTML = "is moving to ";
+            document.getElementById("isAttacking").style.visibility = "visible";
+            turnPhase = "moveTroops2"
+        }
+    }
+    else if(turnPhase === "moveTroops2"){
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) {
+            document.getElementById("defendingCountry").innerHTML = country;
+            document.getElementById("defendingCountry").style.visibility = "visible";
+            let nextTo = false;
+            for(let i = 0; i<moveFrom.attacks.length; i++){
+                if(moveFrom.attacks[i] === country){
+                    nextTo = true;
+                }
+            }
+            if(nextTo === true){
+                const response = prompt("How many troops would you like to move from " + moveFrom.country + " to " + country + "?")
+                const numofTroopsMoving = parseInt(response);
+                if(numofTroopsMoving> moveFrom.armies-1){
+                    alert("Too many troops moving. It needs to be less than " + moveFrom.armies);
+                }
+                else if(numofTroopsMoving <= 0 ){
+                    alert("Moving zero or less troops is not allowed");
+                }
+                else{
+                    players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies += numofTroopsMoving;
+                    players[playerTurn].owns[playerOwnedIndex(moveFrom.country, playerTurn)].armies -= numofTroopsMoving;
+                    document.getElementById(country.replace(/\s+/g, '')).value = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
+                    document.getElementById(moveFrom.country.replace(/\s+/g, '')).value -= numofTroopsMoving;
+                    document.getElementById("isAttacking").innerHTML = "is attacking";
+                    document.getElementById("isAttacking").style.visibility = "hidden"
+                    document.getElementById("attackingCountry").style.visibility = "hidden";
+                    document.getElementById("defendingCountry").style.visibility = "hidden";
+                    socket.emit('moveTroopsEnd', players, playerTurn);
+                    turnPhase = "BULLSHIT";
+                    playerTurn++;
+                   // document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+                    //document.getElementById("troopNum").style.visibility = "hidden";
+                    //document.getElementById("restart").style.visibility = "hidden";
+                    document.getElementById("turnPhase").innerHTML = "Fortify";
+                    //document.getElementById("randomAssigns").style.visibility = "hidden";
+                    document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+                    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+
+                }
+            }
+            else{
+                moveFrom = [];
+                turnPhase = "moveTroops"
+            }
+        }
+    }
 }
 
