@@ -31,6 +31,7 @@ function countryButton(country) {
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
             if(remainingArmies[playerTurn] === 0 ){
                 socket.emit('fortification', userTurn, players);
+                turnPhase = "BULLSHIT"
             }
             /*if(playerTurn === players.length - 1) {
                 playerTurn = 0

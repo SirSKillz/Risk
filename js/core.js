@@ -54,6 +54,7 @@ function randomAssign() {
             remainingArmies[playerTurn]--;
         }
         socket.emit('fortification', userTurn, players)
+        turnPhase = "BULLSHIT"
         // if(playerTurn === players.length - 1) {
         //     playerTurn = 0
         // } else {
