@@ -1,0 +1,17 @@
+body {
+    background: black;
+    width: 100%;
+}
+
+
+h1 {
+    color: red;
+    font-size: 60px;
+}
+
+.title {
+    width: 100%;
+    align-items: center;
+    margin: 10%;
+;
+}
