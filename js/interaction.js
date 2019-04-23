@@ -54,7 +54,7 @@ function countryButton(country) {
             // *********TODO PLAYER TURN TEXT IN UPPER RIGHT CORNER
         }
     }//intialFortify end if statement
-    else if(turnPhase === "fortify")
+    else if(turnPhase === "fortify" && playerTurn === userTurn)
     //if turnPhase is fortify
     {
         if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color)
@@ -70,6 +70,7 @@ function countryButton(country) {
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
             if(fortifyArmies === 0)
             {
+                socket.emit('fortifyIndy', players);
                 document.getElementById("turnPhase").innerHTML = "Attack";
                 document.getElementById("numTroopsRemaining").style.visibility = "hidden";
                 document.getElementById("troopNum").style.visibility = "hidden";

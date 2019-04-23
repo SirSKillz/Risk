@@ -84,6 +84,7 @@ function randomAssign() {
             players[playerTurn].owns[rand].armies++;
             if(fortifyArmies === 0)
             {
+                socket.emit('fortifyIndy', players);
                 document.getElementById("turnPhase").innerHTML = "Attack";
                 document.getElementById("numTroopsRemaining").style.visibility = "hidden";
                 document.getElementById("troopNum").style.visibility = "hidden";
