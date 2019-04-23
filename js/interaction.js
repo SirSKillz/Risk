@@ -23,12 +23,15 @@ function selectButton() {
 function countryButton(country) {
     //if turnPhase is initialFortify
     if(turnPhase === "initialFortify") {
-        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) { //if they cown the country
+        if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[userTurn].color) { //if they cown the country
             /* TODO:   Disable radio buttons */
             //add one army
             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
             players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
+            if(remainingArmies[playerTurn] === 0 ){
+                socket.emit('fortification', userTurn, players);
+            }
             /*if(playerTurn === players.length - 1) {
                 playerTurn = 0
 
@@ -37,17 +40,17 @@ function countryButton(country) {
                 playerTurn++
 
             }*/
-            document.getElementById("playerTurnID").style.color = players[playerTurn].color;
-            document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
-            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+            //document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+            //document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+            //document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
             //start the first round
-            if(remainingArmies.reduce(function(a,b){return a + b},0)===0)
-            {
-                beginTurn();
-                document.getElementById("turnPhase").innerHTML = "Fortify";
-                document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-                turnPhase = "fortify"
-            }
+            // if(remainingArmies.reduce(function(a,b){return a + b},0)===0)
+            // {
+            //     beginTurn();
+            //     document.getElementById("turnPhase").innerHTML = "Fortify";
+            //     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+            //     turnPhase = "fortify"
+            // }
             // *********TODO PLAYER TURN TEXT IN UPPER RIGHT CORNER
         }
     }//intialFortify end if statement

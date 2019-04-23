@@ -16,6 +16,7 @@
         let userTurn = 0;
         let turnPhase = "fortify";
         let fortifyArmies = 10;
+        let playersDup = [];
         let players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
             name: "",
             number: 2,
@@ -374,6 +375,7 @@
         players = playersFromOtherGame;
         remainingArmies = remainingArmiesFromOtherGame;
         playerTurn = userTurn;
+        turnPhase = "initialFortify"
         document.getElementById("playGame").style.visibility = "hidden";
         document.getElementById("select").style.visibility =  "hidden";
         document.getElementById("textSelect").style.visibility =  "hidden";
@@ -385,6 +387,7 @@
         document.getElementById("randomAssigns").style.visibility = "visible";
         document.getElementById("turnPhase").innerHTML = "Intial Fortification";
         document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+        document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
         document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
         for(let i = 0; i<players.length; i++){
             for(let j = 0; j<players[i].owns.length; j++) {
@@ -398,6 +401,14 @@
        location.reload();
        socket.emit('removeFromGame')
     });
+
+    socket.on('fortification', function(turn, playersFromOtherGame){
+        playersDup.push(playersFromOtherGame[turn]);
+    })
+
+    socket.on('fortificationComplete', function(turn, playersFromOtherGame){
+        ID = turn;
+    })
 
 </script>
 <script type="text/javascript" src="js/core.js"></script>

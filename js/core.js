@@ -53,20 +53,21 @@ function randomAssign() {
             document.getElementById(countries[temp].replace(/\s+/g, '')).value = parseInt(document.getElementById(countries[temp].replace(/\s+/g, '')).value) + 1;
             remainingArmies[playerTurn]--;
         }
-        if(playerTurn === players.length - 1) {
-            playerTurn = 0
-        } else {
-            playerTurn++
-        }
-        document.getElementById("playerTurnID").style.color = players[playerTurn].color;
-        document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
-        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
-        if(remainingArmies.reduce(function(a,b){return a + b},0)===0) {
-            beginTurn();
-            document.getElementById("turnPhase").innerHTML = "Fortify";
-            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-            turnPhase = "fortify"
-        }
+        socket.emit('fortification', userTurn, players)
+        // if(playerTurn === players.length - 1) {
+        //     playerTurn = 0
+        // } else {
+        //     playerTurn++
+        // }
+        // document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+        // document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+        // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+        // if(remainingArmies.reduce(function(a,b){return a + b},0)===0) {
+        //     beginTurn();
+        //     document.getElementById("turnPhase").innerHTML = "Fortify";
+        //     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+        //     turnPhase = "fortify"
+        // }
     } else if(turnPhase === "fortify"){
         while(fortifyArmies > 0 ) {
             rand = Math.floor(Math.random() * players[playerTurn].owns.length);

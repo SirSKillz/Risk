@@ -84,6 +84,7 @@ server.listen(8001);
 // use socket.io
 let io = require('socket.io').listen(server);
 let game1 = [];
+let count = 0;
 
 // define interactions with client
 io.sockets.on('connection', function(socket){
@@ -147,4 +148,14 @@ io.sockets.on('connection', function(socket){
         socket.disconnect('game 1');
         game1 = [];
     });
+
+    socket.on('fortification', function(userTurn, players){
+        console.log("Here?")
+        socket.to('game 1').emit('fortification', userTurn, players);
+        count++;
+        console.log(count);
+        if(count === game1.length){
+            socket.to('game 1').emit('fortificationComplete', userTurn, players);
+        }
+    })
 });
