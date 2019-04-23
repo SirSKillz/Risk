@@ -73,10 +73,16 @@ server = http.createServer(function(req, res){
     }
 });
 
+// Send 404 page if the actual page failed to load
 function send404(res) {
-    res.writeHead(404);
-    res.write('404');
-    res.end()
+    fs.readFile('../404.html', function(err, data){
+        if (err){
+            return send404(res);
+        }
+        res.writeHead(200, {'Content-Type':'text/html'});
+        res.write(data, 'utf8');
+        res.end();
+    });
 }
 
 server.listen(8001);
