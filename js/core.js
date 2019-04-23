@@ -117,7 +117,7 @@ function assignCountries() {
         players.push({name: "", number: 3, owns:["D"], color: "green"});
         players.push({name: "", number: 4, owns:["D"], color: "magenta"});
         players.push({name: "", number: 5, owns:["D"], color: "black"});
-        players.push({name: "", number: 6, owns:["D"], color: "white"})
+        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon"})
     }
     document.getElementById("playGame").style.visibility = "hidden";
     document.getElementById("select").style.visibility =  "hidden";
