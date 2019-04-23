@@ -500,7 +500,7 @@
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
             }
         }
-        if(playerTurnFromOtherGame === players.length){
+        if(playerTurnFromOtherGame === players.length-1){
             playerTurn = 0;
         }
         else{

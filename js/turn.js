@@ -33,16 +33,16 @@ function endTurn() {
     // }
     // defendingCountry = {};
     // attackingCountry = {};
-    // document.getElementById("attackingCountry").style.visibility = "hidden";
-    // document.getElementById("defendingCountry").style.visibility = "hidden";
-    // document.getElementById("isAttacking").style.visibility = "hidden";
-    // document.getElementById("undoButton").style.visibility = "hidden";
-    // document.getElementById("attackingTroops").style.visibility = "hidden";
-    // document.getElementById("defendingTroops").style.visibility = "hidden";
-    // document.getElementById("attackControlled").style.visibility = "hidden";
-    // document.getElementById("select2").style.visibility = "hidden";
-    // document.getElementById("attack20").style.visibility = "hidden";
-    // document.getElementById("numberTroopsAttacking").style.visibility = "hidden";
+    document.getElementById("attackingCountry").style.visibility = "hidden";
+    document.getElementById("defendingCountry").style.visibility = "hidden";
+    document.getElementById("isAttacking").style.visibility = "hidden";
+    document.getElementById("undoButton").style.visibility = "hidden";
+    document.getElementById("attackingTroops").style.visibility = "hidden";
+    document.getElementById("defendingTroops").style.visibility = "hidden";
+    document.getElementById("attackControlled").style.visibility = "hidden";
+    document.getElementById("select2").style.visibility = "hidden";
+    document.getElementById("attack20").style.visibility = "hidden";
+    document.getElementById("numberTroopsAttacking").style.visibility = "hidden";
     document.getElementById("endTurn").style.visibility = "hidden";
     // beginTurn();
     // document.getElementById("randomAssigns").style.visibility = "visible";
