@@ -48,10 +48,10 @@ function endTurn() {
     // document.getElementById("randomAssigns").style.visibility = "visible";
     // document.getElementById("playerTurnID").style.visibility = "visible";
     // document.getElementById("playerTurnID").style.color = players[playerTurn].color;
-    // document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+     //document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
     // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
     // document.getElementById("numTroopsRemaining").style.visibility = "visible";
-    // document.getElementById("turnPhase").innerHTML = "Fortify";
+    document.getElementById("turnPhase").innerHTML = "Move Troops";
     // turnPhase = "fortify"
     turnPhase = "moveTroops"
     socket.emit('moveTroops1');

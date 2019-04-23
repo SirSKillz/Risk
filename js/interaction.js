@@ -185,9 +185,15 @@ function countryButton(country) {
                     document.getElementById("isAttacking").style.visibility = "hidden"
                     document.getElementById("attackingCountry").style.visibility = "hidden";
                     document.getElementById("defendingCountry").style.visibility = "hidden";
+                    document.getElementById("restartGame").style.visibility = "hidden";
                     socket.emit('moveTroopsEnd', players, playerTurn);
                     turnPhase = "BULLSHIT";
-                    playerTurn++;
+                    if(playerTurn === players.length-1){
+                        playerTurn = 0;
+                    }
+                    else{
+                        playerTurn++;
+                    }
                    // document.getElementById("numTroopsRemaining").style.visibility = "hidden";
                     //document.getElementById("troopNum").style.visibility = "hidden";
                     //document.getElementById("restart").style.visibility = "hidden";
