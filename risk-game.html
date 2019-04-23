@@ -472,7 +472,8 @@
     })
 
     socket.on('successDefense', function(attack, defend){
-        alert( "Player : " + playerTurn +" has lost the battle between " + attack + " and " + defend);
+        let num = playerTurn +1;
+        alert( "Player : " + num +" has lost the battle between " + attack + " and " + defend);
     })
 
     socket.on('battleInProgress', function(playersFromOtherGame){
