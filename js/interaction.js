@@ -29,14 +29,14 @@ function countryButton(country) {
             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
             players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
-            if(playerTurn === players.length - 1) {
+            /*if(playerTurn === players.length - 1) {
                 playerTurn = 0
 
             }
             else {
                 playerTurn++
 
-            }
+            }*/
             document.getElementById("playerTurnID").style.color = players[playerTurn].color;
             document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
             document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];

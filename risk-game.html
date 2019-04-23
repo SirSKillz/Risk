@@ -354,6 +354,7 @@
 <body>
 <script>
     let ID;
+    let testArray = [];
     let socket = io.connect();
     socket.emit('room');
 
@@ -369,6 +370,7 @@
                 userTurn = i;
             }
         }
+        testArray = game1;
         players = playersFromOtherGame;
         remainingArmies = remainingArmiesFromOtherGame;
         playerTurn = userTurn;
@@ -390,6 +392,11 @@
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.visibility = "visible";
             }
         }
+    });
+
+    socket.on('restart', function(){
+       location.reload();
+       socket.emit('removeFromGame')
     });
 
 </script>

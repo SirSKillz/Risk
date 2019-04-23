@@ -3,7 +3,7 @@
 function restart() {
     //console.log("Restarting");
     location.reload();
-    socket.emit("restart", ID);
+    socket.emit("restart");
 }
 
 // Find index for the country within player data ?????

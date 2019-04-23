@@ -137,4 +137,14 @@ io.sockets.on('connection', function(socket){
     socket.on('realstart', function(players, remainingArmies) {
         socket.to('game 1').emit('realstart', players, game1, remainingArmies);
     })
+
+    socket.on('restart', function() {
+        socket.to('game 1').emit('restart');
+        socket.disconnect('game 1');
+    });
+
+    socket.on('removeFromGame', function(){
+        socket.disconnect('game 1');
+        game1 = [];
+    });
 });
