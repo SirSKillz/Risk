@@ -155,6 +155,7 @@ function assignCountries() {
         remainingArmies[y] = startingArmies[players.length] - originalArmies
     }// End players for loop
     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
-    turnPhase = "initialFortify"
+    turnPhase = "initialFortify";
+    socket.emit('realstart', players);
 }
 //control shift k

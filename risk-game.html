@@ -362,6 +362,10 @@
         ID = num;
     });
 
+    socket.on("realstart", function(playersFromOtherGame){
+       players = playersFromOtherGame;
+    });
+
 </script>
 <script type="text/javascript" src="js/core.js"></script>
 
