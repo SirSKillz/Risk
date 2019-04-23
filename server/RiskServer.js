@@ -1,9 +1,19 @@
-//let server = require('express')();
-let http = require('http');
-//let io = require('socket.io')(http);
-let url = require('url');
-let fs = require('fs');
+let http    = require('http');
+let url     = require('url');
+let fs      = require('fs');
+const SQL   = require('sqlite3');
 
+
+global["database"] = new SQL.Database("./database.db", function (err) {
+    if (err) {
+        console.error(err.message);
+    } else {
+        // Create Login table
+        let createLoginSql = "CREATE TABLE IF NOT EXISTS login(username TEXT PRIMARY KEY, password TEXT)";
+        database.run(createLoginSql);
+        console.log("Database was successfully opened!");
+    }
+});
 
 server = http.createServer(function(req, res){
     // your normal server code
@@ -85,5 +95,36 @@ io.sockets.on('connection', function(socket){
     //recieve client data
     socket.on('client_data', function(data){
         process.stdout.write(data.letter);
+    });
+
+    socket.on('login', function (username, password) {
+        let sql = "SELECT * FROM login WHERE username = ?";
+        database.get(sql, username, function (err, user) {
+            if (err) {
+                console.error(err.message);
+                socket.emit('badLogin');
+            } else {
+                // Check if the user exists and that the password is correct
+                if (user && user.password === password) {
+                    // The username and password match
+                    socket.emit('goodLogin');
+                } else {
+                    socket.emit('badLogin');
+                }
+            }
+        });
+    });
+    socket.on('register', function (username, password) {
+        let sql = "INSERT INTO login (username, password) VALUES (?, ?)";
+        database.run(sql, [username, password], function (err) {
+            if (err) {
+                socket.emit('usernameTaken');
+                console.warn("Username was taken: " + err);
+            } else {
+                // If it succeeded, it added a user
+                socket.emit('registerSuccess');
+                console.log("Registered new user: " + username);
+            }
+        });
     });
 });
