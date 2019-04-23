@@ -122,4 +122,13 @@ io.sockets.on('connection', function(socket){
             }
         });
     });
+
+    socket.on('room', function() {
+        console.log('joining game 1');
+        socket.join('game 1');
+    });
+
+    socket.on('start', function() {
+        socket.to('game 1').emit('start', 4);
+    })
 });
