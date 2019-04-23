@@ -158,4 +158,8 @@ io.sockets.on('connection', function(socket){
             socket.to('game 1').emit('fortificationComplete', userTurn, players);
         }
     })
+
+    socket.on('finalInitialFort', function(players){
+        socket.to('game 1').emit('finalInitialFort', players);
+    })
 });

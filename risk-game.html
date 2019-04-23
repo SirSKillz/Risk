@@ -407,7 +407,14 @@
     })
 
     socket.on('fortificationComplete', function(turn, playersFromOtherGame){
-        ID = turn;
+        for(let i = 0; i< playersDup.length; i++){
+            players[playersDup[i].number-1] = playersDup[i];
+        }
+        socket.emit('finalInitialFort', players);
+    })
+
+    socket.on('finalInitialFort', function(playersFromOtherGame){
+        players = playersFromOtherGame;
     })
 
 </script>
