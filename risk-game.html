@@ -416,25 +416,47 @@
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
             }
         }
-        beginTurn();
-        document.getElementById("turnPhase").innerHTML = "Fortify";
-        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-        turnPhase = "fortify"
         socket.emit('finalInitialFort', players);
+        if(userTurn === 0) {
+            beginTurn();
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+            turnPhase = "fortify"
+        }
+        else{
+            document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+            document.getElementById("troopNum").style.visibility = "hidden";
+            document.getElementById("restart").style.visibility = "hidden";
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("randomAssigns").style.visibility = "hidden";
+            document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+            document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+        }
     })
 
-    socket.on('finalInitialFort', function(playersFromOtherGame){
+    socket.on('finalInitialFort', function(playersFromOtherGame) {
         players = playersFromOtherGame;
         playerTurn = 0;
-        for(let i = 0; i<players.length; i++){
-            for(let j = 0; j<players[i].owns.length; j++) {
+        for (let i = 0; i < players.length; i++) {
+            for (let j = 0; j < players[i].owns.length; j++) {
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
             }
         }
-        beginTurn();
-        document.getElementById("turnPhase").innerHTML = "Fortify";
-        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-        turnPhase = "fortify"
+        if (userTurn === 0) {
+            beginTurn();
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+            turnPhase = "fortify"
+        }
+        else{
+            document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+            document.getElementById("troopNum").style.visibility = "hidden";
+            document.getElementById("restart").style.visibility = "hidden";
+            document.getElementById("turnPhase").innerHTML = "Fortify";
+            document.getElementById("randomAssigns").style.visibility = "hidden";
+            document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+            document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+        }
     })
 
 </script>

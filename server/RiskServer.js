@@ -161,5 +161,6 @@ io.sockets.on('connection', function(socket){
 
     socket.on('finalInitialFort', function(players){
         socket.to('game 1').emit('finalInitialFort', players);
+        count=0;
     })
 });
