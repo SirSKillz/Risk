@@ -42,5 +42,3 @@ document.onclick = function () {
         }
     }
 };
-
-

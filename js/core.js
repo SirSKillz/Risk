@@ -1,8 +1,9 @@
 // Provides the core functionality of the game
-
 // Restarts the game
 function restart() {
+    console.log("Restarting");
     location.reload();
+    socket.emit("restart")
 }
 
 // Find index for the country within player data ?????

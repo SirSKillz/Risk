@@ -25,6 +25,11 @@
 </script>
 <script type="text/javascript" src="js/login.js"></script>
 
+    socket.on("goodLogin", function () {
+        document.location.href = "risk-game.html";
+        socket.close();
+    });
+</script>
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
