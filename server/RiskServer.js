@@ -176,4 +176,8 @@ io.sockets.on('connection', function(socket){
     socket.on('battleInProgress', function(players){
         socket.to('game 1').emit('battleInProgress', players);
     })
+
+    socket.on('playerElimination', function(eliminated){
+        socket.to('game 1').emit('playerElimination', eliminated);
+    })
 });

@@ -486,6 +486,9 @@
         }
     })
 
+    socket.on('playerElimination', function (eliminated) {
+        alert("Player " + eliminated + " has been eliminated")
+    })
 </script>
 <script type="text/javascript" src="js/core.js"></script>
 

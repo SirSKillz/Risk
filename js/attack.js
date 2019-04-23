@@ -53,6 +53,7 @@ function conquered1(attackingArmies) {
             turnPhase = "attack";//set turnPhase
             if(players[defendingCountry.player].owns.length === 0) //IF PLAYER IS ELIMINATED
             {
+                socket.emit('playerElimination', defendingCountry.player)
                 players.splice(defendingCountry.player , 1);
                 if(players.length === 1)
                 //IF THE GAME IS OVER
