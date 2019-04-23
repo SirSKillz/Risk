@@ -150,6 +150,7 @@ function attackControlled (attackingArmies) {
     }// End if
     if (attackingCountry.armies === 1) {//if they lost the battle
         alert("You have lost the battle between " + attackingCountry.country + " and " + defendingCountry.country);
+        socket.emit('successDefense', attackingCountry.country, defendingCountry.country);
         defendingCountry = [];
         attackingCountry = [];
         turnPhase = "attack";
@@ -164,6 +165,7 @@ function attackControlled (attackingArmies) {
         document.getElementById("attack20").style.visibility = "hidden";
         document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
     }
+    socket.emit('battleInProgress', players);
     return conquered
 
 }

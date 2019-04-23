@@ -167,4 +167,13 @@ io.sockets.on('connection', function(socket){
     socket.on('fortifyIndy', function(players){
         socket.to('game 1').emit('fortifyIndy', players);
     })
+
+    socket.on('successDefense', function(attack, defend){
+        console.log(attack);
+        socket.to('game 1').emit('successDefense', attack, defend);
+    })
+
+    socket.on('battleInProgress', function(players){
+        socket.to('game 1').emit('battleInProgress', players);
+    })
 });
