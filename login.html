@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
 <script>
     let socket = io.connect();
+
+    socket.on("goodLogin", function (err) {
+        onConfirmation();
+    });
+    socket.on("badLogin", function (err) {
+        onFailure();
+    });
+    socket.on("registerSuccess", function (err) {
+        onConfirmation();
+    });
+    socket.on("usernameTaken", function (err) {
+        onFailure();
+    });
+</script>
+<script type="text/javascript" src="js/login.js"></script>
 
     socket.on("goodLogin", function () {
         document.location.href = "risk-game.html";
@@ -26,7 +40,7 @@
             <img src="/img/dice.png" id="icon" alt="User Icon" />
         </div>
 
-        <div type="text" id="errMsg" class="errorMsg">Bad Login</div>
+        <div type="text" id="errMsg" class="errorMsg">Bad Information</div>
         <!-- Login Form -->
         <form>
             <input type="text" id="username" class="fadeIn second" name="login" placeholder="Login" required>
