@@ -92,11 +92,6 @@ io.sockets.on('connection', function(socket){
         socket.emit('date', {'date': new Date()});
     }, 1000);
 
-    //recieve client data
-    socket.on('client_data', function(data){
-        process.stdout.write(data.letter);
-    });
-
     socket.on('login', function (username, password) {
         let sql = "SELECT * FROM login WHERE username = ?";
         database.get(sql, username, function (err, user) {
