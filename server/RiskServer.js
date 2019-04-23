@@ -180,4 +180,8 @@ io.sockets.on('connection', function(socket){
     socket.on('playerElimination', function(eliminated){
         socket.to('game 1').emit('playerElimination', eliminated);
     })
+
+    socket.on('moveTroops1', function(){
+        socket.to('game 1').emit('moveTroops1');
+    })
 });

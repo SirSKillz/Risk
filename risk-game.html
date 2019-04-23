@@ -486,6 +486,10 @@
         }
     })
 
+    socket.on('moveTroops1', function () {
+        document.getElementById("turnPhase").innerHTML = "MoveTroops";
+    })
+
     socket.on('playerElimination', function (eliminated) {
         alert("Player " + eliminated + " has been eliminated")
     })
