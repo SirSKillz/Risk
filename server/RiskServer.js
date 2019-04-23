@@ -88,11 +88,15 @@ server.listen(8001);
 
 // use socket.io
 let io = require('socket.io').listen(server);
-let loggedInUsers = [];
+let game1 = [];
 let currentLobby;
-let roomNum = 0;
-let roomArray = [];
+let count = 0;
+let loggedInUsers = [];
 let createGame = false;
+let roomArray = [];
+let roomNum = 1;
+
+
 // define interactions with client
 io.sockets.on('connection', function(socket){
     console.log("New user!");
@@ -197,7 +201,7 @@ io.sockets.on('connection', function(socket){
     });
 
     socket.on('start', function() {
-        socket.to('game 0').emit('start', 4);
+        socket.to('game 1').emit('start', 4);
     })
 
     socket.on('realstart', function(players, remainingArmies) {

@@ -22,7 +22,9 @@ function sendRegisterData() {
     }}
 
 function onConfirmation() {
-    window.location.href = "risk-game.html"
+    window.location.href = "/";
+   // socket.emit('get lobby');
+    socket.emit('logged in', document.getElementById("username").value, false);
 }
 
 function onFailure() {
