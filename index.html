@@ -1,24 +1,48 @@
 <!doctype html>
-<html>
 <head>
-    <title>Socket.io Test</title>
+    <title>Risk!</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>let user;</script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 </head>
-<body>
-<script>
-    //var socket = io.connect();
+<style>A {text-decoration: none;} </style>
+<header id="header" class="header">
+    <script>
+        let socket = io.connect();
+        //let temp = socket.id;
+        socket.emit('i am lobby');
 
-    // socket.on('date', function(data){
-    //     $('#date').text(data.date);
-    // });
-    // $(document).ready(function(){
-    //     $('#text').keypress(function(e){
-    //         socket.emit('client_data', {'letter': String.fromCharCode(e.charCode)});
-    //     });
-    // });
-</script>
-<div id="date"></div>
-<textarea id="text"></textarea>
-</body>
-</html>
+        socket.on('username', function(username) {
+            user = username;
+        });
+
+        socket.on('load risk', function () {
+            window.location.href = "/risk-game.html";
+        });
+
+        socket.on('not logged in yet', function () {
+            window.location.href = "/login.html";
+        });
+        // socket.on('get lobby2', function() {
+        //     socket.emit('i am lobby', socket.id);
+        // });
+
+    </script>
+    <div class="container-width">
+        <nav class="menu">
+            <div class="menu-item"><a href="login.html">Login/Register</a>
+            </div>
+            <div class="menu-item"><a href="stats.html">Stats</a>
+            </div>
+        </nav>
+        <div class="row">
+                <div id="titleText">Risk!
+                </div>
+                <input type="button" id="joinGame" class="joinGame" value="Join Game" onclick="joinGame(user)">
+                <input type="button" id="addGame" class="joinGame" value="Make New Game" onclick="makeGame(user)">
+        </div>
+    </div>
+</header>

@@ -23,9 +23,14 @@ server = http.createServer(function(req, res){
     //console.log("New path " + pathTemp);
     switch (pathTemp) {
         case '/':
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write('<h1>Hello! Try the <a href="/login.html">Test page</a></h1>');
-            res.end();
+            fs.readFile('../index.html', function (err, data) {
+                if(err){
+                    return send404(res);
+                }
+                res.writeHead(200, {'Content-Type' : 'text/html'});
+                res.write(data, 'utf8');
+                res.end();
+            });
             break;
         case '/c':
             // Should be a CSS file
@@ -83,18 +88,18 @@ server.listen(8001);
 
 // use socket.io
 let io = require('socket.io').listen(server);
-let game1 = [];
-let count = 0;
-
+let loggedInUsers = [];
+let currentLobby;
+let roomNum = 0;
+let roomArray = [];
+let createGame = false;
 // define interactions with client
 io.sockets.on('connection', function(socket){
     console.log("New user!");
     //send data to client
-    setInterval(function(){
-        socket.emit('date', {'date': new Date()});
-    }, 1000);
 
     socket.on('login', function (username, password) {
+        console.log('logging in');
         let sql = "SELECT * FROM login WHERE username = ?";
         database.get(sql, username, function (err, user) {
             if (err) {
@@ -111,6 +116,31 @@ io.sockets.on('connection', function(socket){
             }
         });
     });
+
+    socket.on('i am lobby', function() {
+        console.log('lobby connected');
+        currentLobby = socket.id;
+        if(loggedInUsers.length !== 0){
+            socket.emit('username', loggedInUsers[loggedInUsers.length-1])
+        }
+
+    });
+
+    socket.on('socket closed', function () {
+        console.log('socket closed');
+    });
+
+    // socket.on('get lobby', function() {
+    //     console.log('getting new lobby');
+    //     socket.emit('get lobby2');
+    // });
+
+    socket.on('logged in', function(username, ) {
+        //console.log('sending username to lobby');
+        //console.log(currentLobby);
+        loggedInUsers.push(username);
+    });
+
     socket.on('register', function (username, password) {
         let sql = "INSERT INTO login (username, password) VALUES (?, ?)";
         database.run(sql, [username, password], function (err) {
@@ -125,14 +155,49 @@ io.sockets.on('connection', function(socket){
         });
     });
 
+    socket.on('join Request', function(username) {
+        for(let i = 0; i<loggedInUsers.length; i++){
+            //  console.log('loggedInUsers at i: ' + loggedInUsers[i])
+            if(username === loggedInUsers[i]){
+                console.log('logged in');
+                socket.emit('load risk');
+                return;
+            }
+        }
+        socket.emit('not logged in yet');
+    });
+
+    socket.on('create game', function(username) {
+        console.log(username);
+        //console.log(loggedInUsers);
+        //console.log(socket.id);
+        for(let i = 0; i<loggedInUsers.length; i++){
+          //  console.log('loggedInUsers at i: ' + loggedInUsers[i])
+            if(username === loggedInUsers[i]){
+                console.log('logged in');
+                createGame = true;
+                socket.emit('load risk');
+                return;
+            }
+        }
+        socket.emit('not logged in yet');
+    });
+
     socket.on('room', function() {
-        console.log('joining game 1');
-        socket.join('game 1');
-        game1.push(socket.id);
+        if(createGame) {
+            console.log('creating game ' + roomNum);
+            socket.join('game ' + roomNum);
+            roomArray.push('game ' + roomNum);
+            createGame = false;
+            roomNum++;
+        } else {
+            console.log('joining game: ' + roomArray[0]);
+            socket.join(roomArray[0]);
+        }
     });
 
     socket.on('start', function() {
-        socket.to('game 1').emit('start', 4);
+        socket.to('game 0').emit('start', 4);
     })
 
     socket.on('realstart', function(players, remainingArmies) {
