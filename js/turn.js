@@ -18,7 +18,7 @@ function beginTurn() {
             }
         }
         if (cCount === 0) {
-            fortifyArmies =+ bonus;
+            fortifyArmies += bonus;
             alert(contName)
         }
     }

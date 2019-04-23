@@ -185,7 +185,7 @@ function countryButton(country) {
                     document.getElementById("isAttacking").style.visibility = "hidden"
                     document.getElementById("attackingCountry").style.visibility = "hidden";
                     document.getElementById("defendingCountry").style.visibility = "hidden";
-                    document.getElementById("restartGame").style.visibility = "hidden";
+                    document.getElementById("restart").style.visibility = "hidden";
                     socket.emit('moveTroopsEnd', players, playerTurn);
                     turnPhase = "BULLSHIT";
                     if(playerTurn === players.length-1){
