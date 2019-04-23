@@ -83,6 +83,7 @@ server.listen(8001);
 
 // use socket.io
 let io = require('socket.io').listen(server);
+let game1 = [];
 
 // define interactions with client
 io.sockets.on('connection', function(socket){
@@ -126,6 +127,7 @@ io.sockets.on('connection', function(socket){
     socket.on('room', function() {
         console.log('joining game 1');
         socket.join('game 1');
+        game1.push(socket.id);
     });
 
     socket.on('start', function() {
@@ -133,6 +135,6 @@ io.sockets.on('connection', function(socket){
     })
 
     socket.on('realstart', function(players) {
-        socket.to('game 1').emit('realstart', players);
+        socket.to('game 1').emit('realstart', players, game1);
     })
 });

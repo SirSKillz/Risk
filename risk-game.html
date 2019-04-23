@@ -13,6 +13,7 @@
         let defendingCountry = {};
         let remainingArmies = [];
         let playerTurn = 0;
+        let userTurn = 0;
         let turnPhase = "fortify";
         let fortifyArmies = 10;
         let players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
@@ -362,7 +363,12 @@
         ID = num;
     });
 
-    socket.on("realstart", function(playersFromOtherGame){
+    socket.on("realstart", function(playersFromOtherGame, game1){
+        for(let i = 0; i<game1.length; i++){
+            if(socket.id === game1[i]){
+                userTurn = i;
+            }
+        }
        players = playersFromOtherGame;
     });
 
