@@ -285,41 +285,40 @@ io.sockets.on('connection', function(socket){
         if(count === game.getUsers().length){
             socket.to(room).emit('fortificationComplete', userTurn, players);
         }
-    })
+    });
 
     socket.on('finalInitialFort', function(players){
         let room = getRoom(socket.id);
         socket.to(room).emit('finalInitialFort', players);
        // let game = getGame(room);
         count = 0;
-    })
+    });
 
     socket.on('fortifyIndy', function(players){
         let room = getRoom(socket.id);
         socket.to(room).emit('fortifyIndy', players);
-    })
+    });
 
     socket.on('successDefense', function(attack, defend){
         console.log(attack);
         let room = getRoom(socket.id);
         socket.to(room).emit('successDefense', attack, defend);
-    })
+    });
 
-    socket.on('battleInProgress', function(players){
+    socket.on('battleInProgress', function(players, attack, defend){
         let room = getRoom(socket.id);
         socket.to(room).emit('battleInProgress', players, attack, defend);
-
-    })
+    });
 
     socket.on('playerElimination', function(eliminated){
         let room = getRoom(socket.id);
         socket.to(room).emit('playerElimination', eliminated);
-    })
+    });
 
     socket.on('moveTroops1', function(){
         let room = getRoom(socket.id);
         socket.to(room).emit('moveTroops1');
-    })
+    });
 
     socket.on('moveTroopsEnd', function (players, playerTurn){
         console.log(playerTurn);
