@@ -132,7 +132,7 @@ function assignCountries() {
     document.getElementById("playerTurnID").style.visibility = "visible";
     document.getElementById("numTroopsRemaining").style.visibility = "visible";
     document.getElementById("troopNum").style.visibility = "visible";
-    document.getElementById("restart").style.visibility = "visible";
+    //document.getElementById("restart").style.visibility = "visible";
     document.getElementById("turnPhase").style.visibility = "visible";
     document.getElementById("randomAssigns").style.visibility = "visible";
     document.getElementById("turnPhase").innerHTML = "Intial Fortification";
