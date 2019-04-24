@@ -108,23 +108,23 @@ function randomAssign() {
 function assignCountries() {
     socket.emit('start', 4);
     if(parseInt(document.getElementById("select").value) === 3) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false})
 
     }//if statement end push players 3,4
     if(parseInt(document.getElementById("select").value) === 4) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false });
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false})
     }// if statement push players 3,4
     if(parseInt(document.getElementById("select").value) === 5) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
-        players.push({name: "", number: 5, owns:["D"], color: "black"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
+        players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false})
     }
     if(parseInt(document.getElementById("select").value) === 6) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
-        players.push({name: "", number: 5, owns:["D"], color: "black"});
-        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
+        players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false});
+        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon", isOut: false})
     }
     document.getElementById("playGame").style.visibility = "hidden";
     document.getElementById("select").style.visibility =  "hidden";
@@ -179,6 +179,14 @@ function dontMoveTroops(){
     }
     else{
         playerTurn++;
+    }
+    while(players[playerTurn].isOut === true){
+        if(playerTurn === players.length-1){
+            playerTurn = 0;
+        }
+        else{
+            playerTurn++;
+        }
     }
     document.getElementById("isAttacking").innerHTML = "is attacking";
     document.getElementById("isAttacking").style.visibility = "hidden"

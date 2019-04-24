@@ -14,16 +14,18 @@
         let remainingArmies = [];
         let playerTurn = 0;
         let userTurn = 0;
+        let numofUsersEliminated = 0;
         let turnPhase = "fortify";
         let moveFrom = [];
         let moveToo;
         let fortifyArmies = 10;
         let playersDup = [];
-        let players = [{name: "", number: 1, owns: ["D"], color: "red"}, {
+        let players = [{name: "", number: 1, owns: ["D"], color: "red", isOut: false}, {
             name: "",
             number: 2,
             owns: ["D"],
-            color: "blue"
+            color: "blue",
+            isOut: false
         }];
         const continents = [{name: "N America", bonus: 5, cCount: 9},
             {name: "Europe", bonus: 5, cCount: 7},
@@ -510,8 +512,9 @@
 
     socket.on('moveTroopsEnd', function(playersFromOtherGame, playerTurnFromOtherGame){
         players = playersFromOtherGame;
-        for (let i = 0; i < players.length; i++) {
-            for (let j = 0; j < players[i].owns.length; j++) {
+        for(let i = 0; i<players.length; i++){
+            for(let j = 0; j<players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.color = players[i].color;
                 document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
             }
         }
@@ -520,6 +523,14 @@
         }
         else{
             playerTurn = playerTurnFromOtherGame+1;
+        }
+        while(players[playerTurn].isOut === true){
+            if(playerTurn === players.length-1){
+                playerTurn = 0;
+            }
+            else{
+                playerTurn++;
+            }
         }
         if (userTurn === playerTurn) {
             beginTurn();
