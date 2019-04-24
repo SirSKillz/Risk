@@ -63,6 +63,7 @@ function conquered1(attackingArmies) {
                     turnPhase = "END"
                 }
             }
+            socket.emit('battleInProgress', players, attackingCountry.country, defendingCountry.country);
             defendingCountry = {}; // reset defending country
             attackingCountry = {}; //reset attacking country
             //reset the page
@@ -166,7 +167,6 @@ function attackControlled (attackingArmies) {
         document.getElementById("attack20").style.visibility = "hidden";
         document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
     }
-    socket.emit('battleInProgress', players);
     return conquered
 
 }
