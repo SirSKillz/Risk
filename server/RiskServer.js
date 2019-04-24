@@ -247,6 +247,11 @@ io.sockets.on('connection', function(socket){
         numPlayers = num;
     });
 
+    socket.on('i won', function () {
+        let room = getRoom(socket.id);
+        socket.to(room).emit('i won');
+    });
+
     socket.on('start', function() {
         let room = getRoom(socket.id);
         socket.to(room).emit('start', 4);
