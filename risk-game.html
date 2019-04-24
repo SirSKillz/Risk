@@ -518,7 +518,14 @@
         document.getElementById("turnPhase").innerHTML = "Attack";
     })
 
-    socket.on('successDefense', function(attack, defend){
+    socket.on('successDefense', function(playersFromOtherGame, attack, defend){
+        players = playersFromOtherGame;
+        for (let i = 0; i < players.length; i++) {
+            for (let j = 0; j < players[i].owns.length; j++) {
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.color = players[i].color;
+                document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
+            }
+        }
         let num = playerTurn +1;
         alert( "Player " + num +" has lost the battle between " + attack + " and " + defend);
     })

@@ -314,10 +314,10 @@ io.sockets.on('connection', function(socket){
         socket.to(room).emit('fortifyIndy', players);
     });
 
-    socket.on('successDefense', function(attack, defend){
+    socket.on('successDefense', function(players, attack, defend){
         console.log(attack);
         let room = getRoom(socket.id);
-        socket.to(room).emit('successDefense', attack, defend);
+        socket.to(room).emit('successDefense',players, attack, defend);
     });
 
     socket.on('battleInProgress', function(players, attack, defend){
