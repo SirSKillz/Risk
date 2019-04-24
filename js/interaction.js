@@ -31,6 +31,13 @@ function countryButton(country) {
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
             if(remainingArmies[playerTurn] === 0 ){
                 socket.emit('fortification', userTurn, players);
+                document.getElementById("playerTurnID").style.visibility = "hidden";
+                document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+                document.getElementById("troopNum").style.visibility = "hidden";
+                document.getElementById("restart").style.visibility = "hidden";
+                document.getElementById("turnPhase").style.visibility = "visible";
+                document.getElementById("randomAssigns").style.visibility = "hidden";
+                document.getElementById("turnPhase").innerHTML = "Waiting on Others";
                 turnPhase = "BULLSHIT"
             }
             /*if(playerTurn === players.length - 1) {
