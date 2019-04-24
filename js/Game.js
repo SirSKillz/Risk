@@ -1,9 +1,10 @@
 class Game {
-    constructor(roomName, user, maxNumOfPlayers){
+    constructor(roomName, user, maxNumOfPlayers, count){
         this.roomName = roomName;
         this.users = [];
         this.users.push(user);
         this.maxNumOfPlayers = maxNumOfPlayers;
+        this.count = count;
     }
 
     addUser(user){
@@ -45,6 +46,14 @@ class Game {
         }
         return false;
 
+    }
+
+    countPlusPlus(){
+        this.count++;
+    }
+
+    resetCount(){
+        this.count = 0;
     }
 }
 

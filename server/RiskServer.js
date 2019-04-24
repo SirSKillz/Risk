@@ -212,7 +212,7 @@ io.sockets.on('connection', function(socket){
         if(createGame) {
             console.log('creating game ' + roomNum);
             socket.join('game ' + roomNum);
-            let game = new Game('game ' + roomNum, socket.id, numPlayers);
+            let game = new Game('game ' + roomNum, socket.id, numPlayers, 0);
             roomArray.push(game);
             //game1.push(socket.id);
             createGame = false;
@@ -228,8 +228,9 @@ io.sockets.on('connection', function(socket){
                     return;
                 }//end if
             }
+            console.log('no free game creating new one');
             socket.join('game ' + roomNum);
-            let game = new Game('game ' + roomNum, socket.id, numPlayers);
+            let game = new Game('game ' + roomNum, socket.id, 2, 0);
             roomArray.push(game);
             roomNum++;
             //game1.push(socket.id);
@@ -271,19 +272,20 @@ io.sockets.on('connection', function(socket){
     socket.on('fortification', function(userTurn, players){
         console.log("Here?")
         let room = getRoom(socket.id);
+        let game = getGame(room);
         socket.to(room).emit('fortification', userTurn, players);
         count++;
         console.log(count);
-        let game = getGame(room);
         if(count === game.getUsers().length){
-            socket.to('game 1').emit('fortificationComplete', userTurn, players);
+            socket.to(room).emit('fortificationComplete', userTurn, players);
         }
     })
 
     socket.on('finalInitialFort', function(players){
         let room = getRoom(socket.id);
         socket.to(room).emit('finalInitialFort', players);
-        count=0;
+       // let game = getGame(room);
+        count = 0;
     })
 
     socket.on('fortifyIndy', function(players){
