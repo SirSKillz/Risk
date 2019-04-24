@@ -25,7 +25,7 @@ function conquered1(attackingArmies) {
             {
                 socket.emit("i won");
                 console.log("Emitted i won");
-                window.location.href = "/won.html";
+                window.location.href = "/win.html";
             }
         }
         socket.emit('battleInProgress', players, attackingCountry.country, defendingCountry.country);
