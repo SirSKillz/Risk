@@ -9,4 +9,5 @@ function makeGame(username) {
 function closeSocket() {
     socket.emit('socket closed');
     socket.close();
+    window.location.href = "login.html";
 }

@@ -20,6 +20,7 @@
         });
 
         socket.on('load risk', function () {
+            socket.emit('number of players', parseInt(document.getElementById("select").value))
             window.location.href = "/risk-game.html";
         });
 
@@ -35,14 +36,25 @@
         <nav class="menu">
             <div class="menu-item"><a href="login.html">Login/Register</a>
             </div>
-            <div class="menu-item"><a href="stats.html">Stats</a>
-            </div>
+<!--            <div class="menu-item"><a href="stats.html">Stats</a>-->
+<!--            </div>-->
         </nav>
         <div class="row">
                 <div id="titleText">Risk!
                 </div>
                 <input type="button" id="joinGame" class="joinGame" value="Join Game" onclick="joinGame(user)">
                 <input type="button" id="addGame" class="joinGame" value="Make New Game" onclick="makeGame(user)">
+        </div>
+        <div class="row">
+            <div type="text" id="errMsg" class="errorMsg">Select Number of Players</div>
+            <select name="select" id="select">
+                <option value="" disabled selected>Number of players</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
         </div>
     </div>
 </header>

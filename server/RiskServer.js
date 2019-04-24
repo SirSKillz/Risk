@@ -2,6 +2,8 @@ const http    = require('http');
 const url     = require('url');
 const fs      = require('fs');
 const SQL   = require('sqlite3');
+const Game = require('../js/Game.js');
+
 
 
 global["database"] = new SQL.Database("./database.db", function (err) {
@@ -95,7 +97,26 @@ let loggedInUsers = [];
 let createGame = false;
 let roomArray = [];
 let roomNum = 1;
+let numPlayers = 0;
 
+
+function getRoom(user){
+    for (let i = 0; i<roomArray.length; i++){
+        if(roomArray[i].isInRoom(user)){
+            return roomArray[i].getRoomName();
+        }
+    }
+    return 'not found';
+}
+
+function getGame(roomName){
+    for (let i = 0; i<roomArray.length; i++){
+        if(roomName === roomArray[i].getRoomName()){
+            return roomArray[i].getRoomName();
+        }
+    }
+    return 'not found';
+}
 
 // define interactions with client
 io.sockets.on('connection', function(socket){
@@ -191,23 +212,42 @@ io.sockets.on('connection', function(socket){
         if(createGame) {
             console.log('creating game ' + roomNum);
             socket.join('game ' + roomNum);
-            roomArray.push('game ' + roomNum);
-            game1.push(socket.id)
+            let game = new Game('game ' + roomNum, socket.id, numPlayers);
+            roomArray.push(game);
+            //game1.push(socket.id);
             createGame = false;
             roomNum++;
+            numPlayers = 0;
         } else {
-            console.log('joining game: ' + roomArray[0]);
-            socket.join(roomArray[0]);
-            game1.push(socket.id);
+            console.log('joining game...');
+            for(let i = 0; i<roomArray.length; i++){
+                if(roomArray[i].hasRoom()){
+                    socket.join(roomArray[i].getRoomName());
+                    roomArray[i].addUser(socket.id);
+                    return;
+                }//end if
+            }
+            socket.join('game ' + roomNum);
+            let game = new Game('game ' + roomNum, socket.id, numPlayers);
+            roomArray.push(game);
+            roomNum++;
+            //game1.push(socket.id);
         }
     });
 
+    socket.on('number of players', function (num) {
+        numPlayers = num;
+    });
+
     socket.on('start', function() {
-        socket.to('game 1').emit('start', 4);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('start', 4);
     });
 
     socket.on('realstart', function(players, remainingArmies) {
-        socket.to('game 1').emit('realstart', players, game1, remainingArmies);
+        let room = getRoom(socket.id);
+        let game = getGame(room);
+        socket.to(room).emit('realstart', players, game.getUsers(), remainingArmies);
     });
 
     socket.on('restart', function() {
