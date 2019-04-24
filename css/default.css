@@ -709,4 +709,17 @@
     position: absolute;
     left: 625px;
     top: 100px;
+
+}
+
+.playGame{
+    visibility: hidden;
+}
+
+.textSelect{
+    visibility: visible;
+    position: absolute;
+    left: 150px;
+    top: 400px;
+
 }

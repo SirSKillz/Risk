@@ -107,27 +107,27 @@ function randomAssign() {
 // randomly assigns players their countries
 function assignCountries() {
     socket.emit('start', 4);
-    if(parseInt(document.getElementById("select").value) === 3) {
+    if(numofPlayersAllowedInGame === 3) {
         players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false})
 
     }//if statement end push players 3,4
-    if(parseInt(document.getElementById("select").value) === 4) {
+    if(numofPlayersAllowedInGame === 4) {
         players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false });
         players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false})
     }// if statement push players 3,4
-    if(parseInt(document.getElementById("select").value) === 5) {
+    if(numofPlayersAllowedInGame === 5) {
         players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
         players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
         players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false})
     }
-    if(parseInt(document.getElementById("select").value) === 6) {
+    if(numofPlayersAllowedInGame === 6) {
         players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
         players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
         players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false});
         players.push({name: "", number: 6, owns:["D"], color: "LightSalmon", isOut: false})
     }
     document.getElementById("playGame").style.visibility = "hidden";
-    document.getElementById("select").style.visibility =  "hidden";
+    //document.getElementById("select").style.visibility =  "hidden";
     document.getElementById("textSelect").style.visibility =  "hidden";
     document.getElementById("playerTurnID").style.visibility = "visible";
     document.getElementById("numTroopsRemaining").style.visibility = "visible";

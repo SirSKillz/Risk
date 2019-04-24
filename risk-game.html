@@ -17,6 +17,7 @@
         let numofUsersEliminated = 0;
         let turnPhase = "fortify";
         let moveFrom = [];
+        let numofPlayersAllowedInGame;
         let moveToo;
         let fortifyArmies = 10;
         let playersDup = [];
@@ -363,6 +364,35 @@
     let socket = io.connect();
     socket.emit('room');
 
+    socket.emit('numofPlayers');
+
+    socket.on('numofPlayers', function(num, numofPlayersinRoom, game1){
+        document.getElementById("textSelect").innerText = "There are " + numofPlayersinRoom +"/" + num;
+        socket.emit('rightBackAtYou', num, numofPlayersinRoom, game1);
+        for(let i = 0; i<game1.length; i++){
+            if(socket.id === game1[i]){
+                userTurn = i;
+            }
+        }
+        numofPlayersAllowedInGame = num;
+        if(num === numofPlayersinRoom && userTurn === 0){
+            document.getElementById("playGame").style.visibility = "visible";
+        }
+    });
+
+    socket.on('rightBackAtYou', function(num, numofPlayersinRoom, game1){
+        document.getElementById("textSelect").innerText = "There are " + numofPlayersinRoom +"/" + num;
+        //socket.emit('rightBackAtYou', num, numofPlayersinRoom, game1);
+        for(let i = 0; i<game1.length; i++){
+            if(socket.id === game1[i]){
+                userTurn = i;
+            }
+        }
+        numofPlayersAllowedInGame = num;
+        if(num === numofPlayersinRoom && userTurn === 0){
+            document.getElementById("playGame").style.visibility = "visible";
+        }
+    });
     socket.on("start", function(num) {
         //console.log(num);
         //socket.emit('fuck you');
@@ -381,7 +411,7 @@
         playerTurn = userTurn;
         turnPhase = "initialFortify"
         document.getElementById("playGame").style.visibility = "hidden";
-        document.getElementById("select").style.visibility =  "hidden";
+        //document.getElementById("select").style.visibility =  "hidden";
         document.getElementById("textSelect").style.visibility =  "hidden";
         document.getElementById("playerTurnID").style.visibility = "visible";
         document.getElementById("numTroopsRemaining").style.visibility = "visible";
@@ -635,13 +665,14 @@
                 <p id="attackingTroops" class="attackingTroops">0</p>
                 <p id="defendingTroops" class="defendingTroops">0</p>
                 <p id="turnPhase" class="turnPhase"></p>
+                <p id="textSelect" class="textSelect">Can't Play Game with 1 Person</p>
                 <input type="button" class="undoButton" id="undoButton" value="Undo" onClick="undo()"/>
                 <form class="troopNum" id="troopNum"></form>
                 <input type="button" id="endTurn" class="endTurn" value="End Turn" onClick="endTurn()">
                 <input type="button" id="attackControlled" class="attackControlled" onClick="callAttackbutton()"
                        value="Attack"/>
                 <input type="button" id="attack20" class="attack20" onClick="attack20()" value="Attack 2.0"/>
-                <label for="select" id="numberTroopsAttacking" class="numberTroopsAttacking">with</label>
+                <label for="select2" id="numberTroopsAttacking" class="numberTroopsAttacking">with</label>
                 <label for="select2"></label><select name="select2" id="select2" class="select2">
                     <option value="3">3</option>
                     <option value="2">2</option>
@@ -653,14 +684,7 @@
             <input type="button" id="randomAssigns" class="randomAssigns" onClick="randomAssign()"
                    value="Random Assigns"/>
             <input type="button" id="DontMoveTroops" class="DontMoveTroops" onClick="dontMoveTroops()" value = "Skip Moving Troops"/>
-            <label for="select" id="textSelect" class="textSelect">Players:</label>
-            <select name="select" id="select">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
+
             <input type="button" id="restart" class="restart" onClick="restart()" value="Restart Game"/>
             <div class="panel-body"></div>
         </div>

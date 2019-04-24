@@ -218,7 +218,7 @@ io.sockets.on('connection', function(socket){
         if(createGame) {
             console.log('creating game ' + roomNum);
             socket.join('game ' + roomNum);
-            let game = new Game('game ' + roomNum, socket.id, numPlayers, 0);
+            let game = new Game('game ' + roomNum, socket.id, numPlayers);
             roomArray.push(game);
             //game1.push(socket.id);
             createGame = false;
@@ -236,7 +236,7 @@ io.sockets.on('connection', function(socket){
             }
             console.log('no free game creating new one');
             socket.join('game ' + roomNum);
-            let game = new Game('game ' + roomNum, socket.id, 2, 0);
+            let game = new Game('game ' + roomNum, socket.id, 2);
             roomArray.push(game);
             roomNum++;
             //game1.push(socket.id);
@@ -244,7 +244,22 @@ io.sockets.on('connection', function(socket){
     });
 
     socket.on('number of players', function (num) {
+        if(num === null){
+            num = 2;
+        }
         numPlayers = num;
+    });
+
+    socket.on("numofPlayers", function(){
+        let room = getRoom(socket.id);
+        let game = getGame(room);
+        console.log('user.length: ' + numPlayers);
+        socket.to(room).emit('numofPlayers', game.getMaxNum(), game.getUsers().length, game.getUsers());
+    });
+
+    socket.on('rightBackAtYou', function(num, numofPlayers, game){
+        let room = getRoom(socket.id);
+        socket.to(room).emit('rightBackAtYou', num, numofPlayers, game);
     });
 
     socket.on('start', function() {
