@@ -31,6 +31,13 @@ function countryButton(country) {
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
             if(remainingArmies[playerTurn] === 0 ){
                 socket.emit('fortification', userTurn, players);
+                document.getElementById("playerTurnID").style.visibility = "hidden";
+                document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+                document.getElementById("troopNum").style.visibility = "hidden";
+                document.getElementById("restart").style.visibility = "hidden";
+                document.getElementById("turnPhase").style.visibility = "visible";
+                document.getElementById("randomAssigns").style.visibility = "hidden";
+                document.getElementById("turnPhase").innerHTML = "Waiting on Others";
                 turnPhase = "BULLSHIT"
             }
             /*if(playerTurn === players.length - 1) {
@@ -151,6 +158,7 @@ function countryButton(country) {
                 }
             }
             document.getElementById("attackingCountry").innerHTML = country;
+            document.getElementById("attackingCountry").style.color = players[playerTurn].color;
             document.getElementById("attackingCountry").style.visibility = "visible";
             document.getElementById("isAttacking").innerHTML = "is moving to ";
             document.getElementById("isAttacking").style.visibility = "visible";
@@ -161,6 +169,7 @@ function countryButton(country) {
         if(document.getElementById(country.replace(/\s+/g, '')).style.color === players[playerTurn].color) {
             document.getElementById("defendingCountry").innerHTML = country;
             document.getElementById("defendingCountry").style.visibility = "visible";
+            document.getElementById("defendingCountry").style.color = players[playerTurn].color;
             let nextTo = false;
             for(let i = 0; i<moveFrom.attacks.length; i++){
                 if(moveFrom.attacks[i] === country){
@@ -172,11 +181,23 @@ function countryButton(country) {
                 const numofTroopsMoving = parseInt(response);
                 if(numofTroopsMoving> moveFrom.armies-1){
                     alert("Too many troops moving. It needs to be less than " + moveFrom.armies);
+                    moveFrom = [];
+                    turnPhase = "moveTroops"
+                    document.getElementById("isAttacking").innerHTML = "is attacking";
+                    document.getElementById("isAttacking").style.visibility = "hidden"
+                    document.getElementById("attackingCountry").style.visibility = "hidden";
+                    document.getElementById("defendingCountry").style.visibility = "hidden";
                 }
                 else if(numofTroopsMoving <= 0 ){
                     alert("Moving zero or less troops is not allowed");
+                    moveFrom = [];
+                    turnPhase = "moveTroops"
+                    document.getElementById("isAttacking").innerHTML = "is attacking";
+                    document.getElementById("isAttacking").style.visibility = "hidden"
+                    document.getElementById("attackingCountry").style.visibility = "hidden";
+                    document.getElementById("defendingCountry").style.visibility = "hidden";
                 }
-                else{
+                else if(numofTroopsMoving > 0 && numofTroopsMoving < moveFrom.armies){
                     players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies += numofTroopsMoving;
                     players[playerTurn].owns[playerOwnedIndex(moveFrom.country, playerTurn)].armies -= numofTroopsMoving;
                     document.getElementById(country.replace(/\s+/g, '')).value = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
@@ -185,7 +206,7 @@ function countryButton(country) {
                     document.getElementById("isAttacking").style.visibility = "hidden"
                     document.getElementById("attackingCountry").style.visibility = "hidden";
                     document.getElementById("defendingCountry").style.visibility = "hidden";
-                    document.getElementById("restart").style.visibility = "hidden";
+                    //document.getElementById("restart").style.visibility = "hidden";
                     socket.emit('moveTroopsEnd', players, playerTurn);
                     turnPhase = "BULLSHIT";
                     if(playerTurn === players.length-1){
@@ -194,19 +215,42 @@ function countryButton(country) {
                     else{
                         playerTurn++;
                     }
+                    while(players[playerTurn].isOut === true){
+                        if(playerTurn === players.length-1){
+                            playerTurn = 0;
+                        }
+                        else{
+                            playerTurn++;
+                        }
+                    }
                    // document.getElementById("numTroopsRemaining").style.visibility = "hidden";
                     //document.getElementById("troopNum").style.visibility = "hidden";
                     //document.getElementById("restart").style.visibility = "hidden";
+                    document.getElementById("DontMoveTroops").style.visibility = "hidden";
                     document.getElementById("turnPhase").innerHTML = "Fortify";
                     //document.getElementById("randomAssigns").style.visibility = "hidden";
                     document.getElementById("playerTurnID").style.color = players[playerTurn].color;
                     document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
 
+                }else{
+                    alert("Invalid input");
+                    moveFrom = [];
+                    turnPhase = "moveTroops"
+                    //document.getElementById(country.replace(/\s+/g, '')).value = players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies;
+                    //document.getElementById(moveFrom.country.replace(/\s+/g, '')).value -= numofTroopsMoving;
+                    document.getElementById("isAttacking").innerHTML = "is attacking";
+                    document.getElementById("isAttacking").style.visibility = "hidden"
+                    document.getElementById("attackingCountry").style.visibility = "hidden";
+                    document.getElementById("defendingCountry").style.visibility = "hidden";
                 }
             }
             else{
                 moveFrom = [];
                 turnPhase = "moveTroops"
+                document.getElementById("isAttacking").innerHTML = "is attacking";
+                document.getElementById("isAttacking").style.visibility = "hidden"
+                document.getElementById("attackingCountry").style.visibility = "hidden";
+                document.getElementById("defendingCountry").style.visibility = "hidden";
             }
         }
     }

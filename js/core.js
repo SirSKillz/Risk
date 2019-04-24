@@ -54,6 +54,13 @@ function randomAssign() {
             remainingArmies[playerTurn]--;
         }
         socket.emit('fortification', userTurn, players)
+        document.getElementById("playerTurnID").style.visibility = "hidden";
+        document.getElementById("numTroopsRemaining").style.visibility = "hidden";
+        document.getElementById("troopNum").style.visibility = "hidden";
+        document.getElementById("restart").style.visibility = "hidden";
+        document.getElementById("turnPhase").style.visibility = "visible";
+        document.getElementById("randomAssigns").style.visibility = "hidden";
+        document.getElementById("turnPhase").innerHTML = "Waiting on Others";
         turnPhase = "BULLSHIT"
         // if(playerTurn === players.length - 1) {
         //     playerTurn = 0
@@ -101,23 +108,23 @@ function randomAssign() {
 function assignCountries() {
     socket.emit('start', 4);
     if(parseInt(document.getElementById("select").value) === 3) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false})
 
     }//if statement end push players 3,4
     if(parseInt(document.getElementById("select").value) === 4) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false });
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false})
     }// if statement push players 3,4
     if(parseInt(document.getElementById("select").value) === 5) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
-        players.push({name: "", number: 5, owns:["D"], color: "black"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
+        players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false})
     }
     if(parseInt(document.getElementById("select").value) === 6) {
-        players.push({name: "", number: 3, owns:["D"], color: "green"});
-        players.push({name: "", number: 4, owns:["D"], color: "magenta"});
-        players.push({name: "", number: 5, owns:["D"], color: "black"});
-        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon"})
+        players.push({name: "", number: 3, owns:["D"], color: "green", isOut: false});
+        players.push({name: "", number: 4, owns:["D"], color: "magenta", isOut: false});
+        players.push({name: "", number: 5, owns:["D"], color: "black", isOut: false});
+        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon", isOut: false})
     }
     document.getElementById("playGame").style.visibility = "hidden";
     document.getElementById("select").style.visibility =  "hidden";
@@ -125,7 +132,7 @@ function assignCountries() {
     document.getElementById("playerTurnID").style.visibility = "visible";
     document.getElementById("numTroopsRemaining").style.visibility = "visible";
     document.getElementById("troopNum").style.visibility = "visible";
-    document.getElementById("restart").style.visibility = "visible";
+    //document.getElementById("restart").style.visibility = "visible";
     document.getElementById("turnPhase").style.visibility = "visible";
     document.getElementById("randomAssigns").style.visibility = "visible";
     document.getElementById("turnPhase").innerHTML = "Intial Fortification";
@@ -160,5 +167,35 @@ function assignCountries() {
     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
     turnPhase = "initialFortify";
     socket.emit('realstart', players, remainingArmies);
+}
+
+
+function dontMoveTroops(){
+    moveFrom = [];
+    turnPhase = "BULLSHIT"
+    socket.emit('moveTroopsEnd', players, playerTurn);
+    if(playerTurn === players.length-1){
+        playerTurn = 0;
+    }
+    else{
+        playerTurn++;
+    }
+    while(players[playerTurn].isOut === true){
+        if(playerTurn === players.length-1){
+            playerTurn = 0;
+        }
+        else{
+            playerTurn++;
+        }
+    }
+    document.getElementById("isAttacking").innerHTML = "is attacking";
+    document.getElementById("isAttacking").style.visibility = "hidden"
+    document.getElementById("attackingCountry").style.visibility = "hidden";
+    document.getElementById("defendingCountry").style.visibility = "hidden";
+    document.getElementById("turnPhase").innerHTML = "Fortify";
+    document.getElementById("DontMoveTroops").style.visibility = "hidden";
+    //document.getElementById("randomAssigns").style.visibility = "hidden";
+    document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
 }
 //control shift k

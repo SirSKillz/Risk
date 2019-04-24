@@ -19,7 +19,7 @@ function beginTurn() {
         }
         if (cCount === 0) {
             fortifyArmies += bonus;
-            alert(contName)
+            //alert(contName)
         }
     }
 }
@@ -52,7 +52,23 @@ function endTurn() {
     // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
     // document.getElementById("numTroopsRemaining").style.visibility = "visible";
     document.getElementById("turnPhase").innerHTML = "Move Troops";
+    document.getElementById("DontMoveTroops").style.visibility = "visible";
     // turnPhase = "fortify"
     turnPhase = "moveTroops"
     socket.emit('moveTroops1');
+}
+
+function winGame(){
+    players = [{name: "", number: 1, owns: [{name: "Alaska", armies:1}], color: "red"}, {
+        name: "",
+        number: 2,
+        owns: [{name: "NW Territory", armies:1}],
+        color: "blue"
+    }, {name: "", number: 3, owns:[{name: "Kamchatka", armies:100}], color: "green"}];
+    for(let i = 0; i<players.length; i++){
+        for(let j = 0; j<players[i].owns.length; j++) {
+            document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).style.color = players[i].color;
+            document.getElementById(players[i].owns[j].name.replace(/\s+/g, '')).value = players[i].owns[j].armies;
+        }
+    }
 }

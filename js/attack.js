@@ -17,13 +17,16 @@ function conquered1(attackingArmies) {
         players[defendingCountry.player].owns.splice(playerOwnedIndex(defendingCountry.country, defendingCountry.player), 1); //remove the country from defending player
         if(players[defendingCountry.player].owns.length === 0) //if the player defending has no countries left
         {
-            players.splice(defendingCountry.player , 1);//remove player
-            if(players.length === 1) // if there is only one
+            alert("Player has been eliminated");
+            players[defendingCountry.player].isOut = true;
+            numofUsersEliminated++;
+            if(numofUsersEliminated === players.length-1) // if there is only one
                 //THIS IS WHERE THE WINNER IS DECLARED
             {
                 alert("Player " + players[0].number + " has won the game")
             }
         }
+        socket.emit('battleInProgress', players, attackingCountry.country, defendingCountry.country);
         defendingCountry = {}; //reset defending country
         attackingCountry = {}; //reset attacking country
         turnPhase = "attack"; //reset turnPhase
@@ -53,8 +56,9 @@ function conquered1(attackingArmies) {
             turnPhase = "attack";//set turnPhase
             if(players[defendingCountry.player].owns.length === 0) //IF PLAYER IS ELIMINATED
             {
-                socket.emit('playerElimination', defendingCountry.player)
-                players.splice(defendingCountry.player , 1);
+                alert("Player has been eliminated");
+                players[defendingCountry.player].isOut = true;
+                numofUsersEliminated++;
                 if(players.length === 1)
                 //IF THE GAME IS OVER
                 {
@@ -63,6 +67,7 @@ function conquered1(attackingArmies) {
                     turnPhase = "END"
                 }
             }
+            socket.emit('battleInProgress', players, attackingCountry.country, defendingCountry.country);
             defendingCountry = {}; // reset defending country
             attackingCountry = {}; //reset attacking country
             //reset the page
@@ -166,7 +171,6 @@ function attackControlled (attackingArmies) {
         document.getElementById("attack20").style.visibility = "hidden";
         document.getElementById("numberTroopsAttacking").style.visibility = "hidden"
     }
-    socket.emit('battleInProgress', players);
     return conquered
 
 }

@@ -307,7 +307,8 @@ io.sockets.on('connection', function(socket){
 
     socket.on('battleInProgress', function(players){
         let room = getRoom(socket.id);
-        socket.to(room).emit('battleInProgress', players);
+        socket.to(room).emit('battleInProgress', players, attack, defend);
+
     })
 
     socket.on('playerElimination', function(eliminated){
