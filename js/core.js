@@ -168,4 +168,26 @@ function assignCountries() {
     turnPhase = "initialFortify";
     socket.emit('realstart', players, remainingArmies);
 }
+
+
+function dontMoveTroops(){
+    moveFrom = [];
+    turnPhase = "BULLSHIT"
+    socket.emit('moveTroopsEnd', players, playerTurn);
+    if(playerTurn === players.length-1){
+        playerTurn = 0;
+    }
+    else{
+        playerTurn++;
+    }
+    document.getElementById("isAttacking").innerHTML = "is attacking";
+    document.getElementById("isAttacking").style.visibility = "hidden"
+    document.getElementById("attackingCountry").style.visibility = "hidden";
+    document.getElementById("defendingCountry").style.visibility = "hidden";
+    document.getElementById("turnPhase").innerHTML = "Fortify";
+    document.getElementById("DontMoveTroops").style.visibility = "hidden";
+    //document.getElementById("randomAssigns").style.visibility = "hidden";
+    document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+}
 //control shift k

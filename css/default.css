@@ -703,3 +703,10 @@
     left: 625px;
     top: 250px
 }
+
+.DontMoveTroops {
+    visibility: hidden;
+    position: absolute;
+    left: 625px;
+    top: 100px;
+}

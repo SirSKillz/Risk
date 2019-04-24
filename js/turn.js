@@ -19,7 +19,7 @@ function beginTurn() {
         }
         if (cCount === 0) {
             fortifyArmies += bonus;
-            alert(contName)
+            //alert(contName)
         }
     }
 }
@@ -52,6 +52,7 @@ function endTurn() {
     // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
     // document.getElementById("numTroopsRemaining").style.visibility = "visible";
     document.getElementById("turnPhase").innerHTML = "Move Troops";
+    document.getElementById("DontMoveTroops").style.visibility = "visible";
     // turnPhase = "fortify"
     turnPhase = "moveTroops"
     socket.emit('moveTroops1');
