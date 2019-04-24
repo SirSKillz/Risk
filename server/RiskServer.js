@@ -192,21 +192,23 @@ io.sockets.on('connection', function(socket){
             console.log('creating game ' + roomNum);
             socket.join('game ' + roomNum);
             roomArray.push('game ' + roomNum);
+            game1.push(socket.id)
             createGame = false;
             roomNum++;
         } else {
             console.log('joining game: ' + roomArray[0]);
             socket.join(roomArray[0]);
+            game1.push(socket.id);
         }
     });
 
     socket.on('start', function() {
         socket.to('game 1').emit('start', 4);
-    })
+    });
 
     socket.on('realstart', function(players, remainingArmies) {
         socket.to('game 1').emit('realstart', players, game1, remainingArmies);
-    })
+    });
 
     socket.on('restart', function() {
         socket.to('game 1').emit('restart');
@@ -215,6 +217,7 @@ io.sockets.on('connection', function(socket){
 
     socket.on('removeFromGame', function(){
         socket.disconnect('game 1');
+        console.log("dude disconnected")
         game1 = [];
     });
 
