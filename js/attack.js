@@ -23,7 +23,9 @@ function conquered1(attackingArmies) {
             if(numofUsersEliminated === players.length-1) // if there is only one
                 //THIS IS WHERE THE WINNER IS DECLARED
             {
-                alert("Player " + players[0].number + " has won the game")
+                socket.emit("i won");
+                console.log("Emitted i won");
+                window.location.href = "/win.html";
             }
         }
         socket.emit('battleInProgress', players, attackingCountry.country, defendingCountry.country);
@@ -59,10 +61,13 @@ function conquered1(attackingArmies) {
                 alert("Player has been eliminated");
                 players[defendingCountry.player].isOut = true;
                 numofUsersEliminated++;
-                if(players.length === 1)
+                if(numofUsersEliminated === players.length-1)
                 //IF THE GAME IS OVER
                 {
-                    alert("Player " + players[0].number + " has won the game");
+                    socket.emit("i won");
+                    console.log("Emitted i won");
+                    window.location.href = "/win.html";
+
                     document.getElementById("endTurn").style.visibility = "hidden";
                     turnPhase = "END"
                 }

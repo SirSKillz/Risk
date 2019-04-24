@@ -600,6 +600,10 @@
         alert("Player " + eliminated + " has been eliminated")
     })
 
+    socket.on('i won', function () {
+        window.location.href = "/lose.html";
+    });
+
 </script>
 <script type="text/javascript" src="js/core.js"></script>
 

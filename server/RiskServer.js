@@ -260,6 +260,10 @@ io.sockets.on('connection', function(socket){
     socket.on('rightBackAtYou', function(num, numofPlayers, game){
         let room = getRoom(socket.id);
         socket.to(room).emit('rightBackAtYou', num, numofPlayers, game);
+    
+    socket.on('i won', function () {
+        let room = getRoom(socket.id);
+        socket.to(room).emit('i won');
     });
 
     socket.on('start', function() {
