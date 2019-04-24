@@ -29,6 +29,7 @@ function countryButton(country) {
             document.getElementById(country.replace(/\s+/g, '')).value = parseInt(document.getElementById(country.replace(/\s+/g, '')).value) + 1;
             players[playerTurn].owns[playerOwnedIndex(country, playerTurn)].armies++;
             remainingArmies[playerTurn] = remainingArmies[playerTurn] - 1;
+            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
             if(remainingArmies[playerTurn] === 0 ){
                 socket.emit('fortification', userTurn, players);
                 document.getElementById("playerTurnID").style.visibility = "hidden";
