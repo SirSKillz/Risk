@@ -96,7 +96,6 @@ server.listen(8001);
 
 // use socket.io
 let io = require('socket.io').listen(server);
-let game1 = [];
 let currentLobby;
 let count = 0;
 let loggedInUsers = [];
@@ -257,10 +256,11 @@ io.sockets.on('connection', function(socket){
         socket.to(room).emit('numofPlayers', game.getMaxNum(), game.getUsers().length, game.getUsers());
     });
 
-    socket.on('rightBackAtYou', function(num, numofPlayers, game){
+    socket.on('rightBackAtYou', function(num, numofPlayers, game) {
         let room = getRoom(socket.id);
         socket.to(room).emit('rightBackAtYou', num, numofPlayers, game);
-    
+    });
+
     socket.on('i won', function () {
         let room = getRoom(socket.id);
         socket.to(room).emit('i won');
@@ -295,7 +295,6 @@ io.sockets.on('connection', function(socket){
     });
 
     socket.on('fortification', function(userTurn, players){
-        console.log("Here?")
         let room = getRoom(socket.id);
         let game = getGame(room);
         socket.to(room).emit('fortification', userTurn, players);
