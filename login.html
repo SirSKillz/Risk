@@ -5,6 +5,7 @@
     <title>Login</title>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script type="text/javascript" src="js/login.js"></script>
 </head>
 <body>
 <script>
@@ -21,13 +22,6 @@
     });
     socket.on("usernameTaken", function () {
         onFailure();
-    });
-</script>
-<script type="text/javascript" src="js/login.js">
-
-    socket.on("goodLogin", function () {
-        document.location.href = "risk-game.html";
-        socket.close();
     });
 </script>
 <div class="wrapper fadeInDown">

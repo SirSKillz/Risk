@@ -1,24 +1,119 @@
-body {
-    background: black;
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+    box-sizing: border-box;
 }
 
-h1 {
-    color: red;
-    font-size: 60px;
-}
-
-.top {
-    height: 10%;
-    background: grey;
+html {
+    height: 100%;
     width: 100%;
+    align-content: center;
 }
 
-nav {
-
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
 }
 
-.center {
+div {
+    text-align: center;
+}
+
+a:visited {
+    color: white;
+}
+
+.clearfix{
+    clear:both;
+}
+.container-width{
+    width:90%;
+    max-width:1150px;
     margin: auto;
+}
+.logo-container{
+    float:left;
+    width:50%;
+}
+.menu{
+    float:right;
+    width:50%;
+}
+.menu-item{
+    float:right;
+    font-size:15px;
+    color:white;
+    width:130px;
+    padding:10px;
+    min-height:50px;
+    text-align:center;
+    line-height:30px;
+    font-weight:400;
+}
+.lead-title{
+    margin:150px 0 30px 0;
+    font-size:40px;
+}
+.header{
+    background-color: #393939;
+    height: 100%;
+}
+.row{
+    align-items: center;
+    padding:10px;
+}
+.cell{
+    max-height:50px;
+    flex-grow:1;
+    flex-basis:100%;
+}
+
+#titleText{
+    margin: 5%;
+    padding:10px;
+    color: red;
+    font-size: 120px;
+}
+@media (max-width: 768px){
+    .row{
+        flex-wrap: nowrap;
+    }
+}
+
+input[type=button] {
+    background-color: red;
+    border: none;
+    color: white;
     width: 80%;
-    padding: 10px;
+    min-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+}
+
+select:invalid {
+    color: grey;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.joinGame {
+    max-height: 40px;
+    margin: 5%;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    color: white;
+    background-color: red;
 }
