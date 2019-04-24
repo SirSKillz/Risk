@@ -112,7 +112,7 @@ function getRoom(user){
 function getGame(roomName){
     for (let i = 0; i<roomArray.length; i++){
         if(roomName === roomArray[i].getRoomName()){
-            return roomArray[i].getRoomName();
+            return roomArray[i];
         }
     }
     return 'not found';
@@ -224,6 +224,7 @@ io.sockets.on('connection', function(socket){
                 if(roomArray[i].hasRoom()){
                     socket.join(roomArray[i].getRoomName());
                     roomArray[i].addUser(socket.id);
+                    console.log('joining ' + roomArray[i].getRoomName());
                     return;
                 }//end if
             }
@@ -251,54 +252,69 @@ io.sockets.on('connection', function(socket){
     });
 
     socket.on('restart', function() {
-        socket.to('game 1').emit('restart');
-        socket.disconnect('game 1');
+        let room = getRoom(socket.id);
+        let game = getGame(room);
+        socket.to(room).emit('restart');
+        socket.disconnect(room);
+        game.removeUser(socket.id);
     });
 
     socket.on('removeFromGame', function(){
-        socket.disconnect('game 1');
+        let room = getRoom(socket.id);
+        let game = getGame(room);
+        socket.disconnect(room);
+        game.removeUser(socket.id);
         console.log("dude disconnected")
-        game1 = [];
+        //game1 = [];
     });
 
     socket.on('fortification', function(userTurn, players){
         console.log("Here?")
-        socket.to('game 1').emit('fortification', userTurn, players);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('fortification', userTurn, players);
         count++;
         console.log(count);
-        if(count === game1.length){
+        let game = getGame(room);
+        if(count === game.getUsers().length){
             socket.to('game 1').emit('fortificationComplete', userTurn, players);
         }
     })
 
     socket.on('finalInitialFort', function(players){
-        socket.to('game 1').emit('finalInitialFort', players);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('finalInitialFort', players);
         count=0;
     })
 
     socket.on('fortifyIndy', function(players){
-        socket.to('game 1').emit('fortifyIndy', players);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('fortifyIndy', players);
     })
 
     socket.on('successDefense', function(attack, defend){
         console.log(attack);
-        socket.to('game 1').emit('successDefense', attack, defend);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('successDefense', attack, defend);
     })
 
     socket.on('battleInProgress', function(players){
-        socket.to('game 1').emit('battleInProgress', players);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('battleInProgress', players);
     })
 
     socket.on('playerElimination', function(eliminated){
-        socket.to('game 1').emit('playerElimination', eliminated);
+        let room = getRoom(socket.id);
+        socket.to(room).emit('playerElimination', eliminated);
     })
 
     socket.on('moveTroops1', function(){
-        socket.to('game 1').emit('moveTroops1');
+        let room = getRoom(socket.id);
+        socket.to(room).emit('moveTroops1');
     })
 
     socket.on('moveTroopsEnd', function (players, playerTurn){
         console.log(playerTurn);
-       socket.to('game 1').emit('moveTroopsEnd', players, playerTurn);
+        let room = getRoom(socket.id);
+       socket.to(room).emit('moveTroopsEnd', players, playerTurn);
     });
 });

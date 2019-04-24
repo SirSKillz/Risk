@@ -1,19 +1,14 @@
 class Game {
-    roomName;
-    users = [];
-    maxNumOfPlayers;
-    numOfPlayers = 0;
-
     constructor(roomName, user, maxNumOfPlayers){
         this.roomName = roomName;
+        this.users = [];
         this.users.push(user);
         this.maxNumOfPlayers = maxNumOfPlayers;
     }
 
     addUser(user){
-        if(this.numOfPlayers < this.maxNumOfPlayers) {
+        if(this.users.length < this.maxNumOfPlayers) {
             this.users.push(user);
-            this.numOfPlayers++;
         } else {
             return 'full';
         }
@@ -23,7 +18,6 @@ class Game {
         for (let i = 0; i<this.users.length; i++){
             if(user === this.users[i]) {
                 this.users.splice(i, 1);
-                this.numOfPlayers--;
             }//end if
         }//end for
     }//end method
@@ -45,10 +39,13 @@ class Game {
         return false;
     }
 
-    hasRoom(){
-        if(this.numOfPlayers < this.maxNumOfPlayers){
+    hasRoom() {
+        if (this.users.length < this.maxNumOfPlayers) {
             return true;
         }
         return false;
+
     }
 }
+
+module.exports = Game;
