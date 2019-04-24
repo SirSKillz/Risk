@@ -18,7 +18,7 @@ function beginTurn() {
             }
         }
         if (cCount === 0) {
-            fortifyArmies =+ bonus;
+            fortifyArmies += bonus;
             alert(contName)
         }
     }
@@ -26,13 +26,13 @@ function beginTurn() {
 
 // Executes when a player ends their turn
 function endTurn() {
-    if(playerTurn === players.length - 1) {
-        playerTurn = 0
-    } else {
-        playerTurn++
-    }
-    defendingCountry = {};
-    attackingCountry = {};
+    // if(playerTurn === players.length - 1) {
+    //     playerTurn = 0
+    // } else {
+    //     playerTurn++
+    // }
+    // defendingCountry = {};
+    // attackingCountry = {};
     document.getElementById("attackingCountry").style.visibility = "hidden";
     document.getElementById("defendingCountry").style.visibility = "hidden";
     document.getElementById("isAttacking").style.visibility = "hidden";
@@ -44,13 +44,15 @@ function endTurn() {
     document.getElementById("attack20").style.visibility = "hidden";
     document.getElementById("numberTroopsAttacking").style.visibility = "hidden";
     document.getElementById("endTurn").style.visibility = "hidden";
-    beginTurn();
-    document.getElementById("randomAssigns").style.visibility = "visible";
-    document.getElementById("playerTurnID").style.visibility = "visible";
-    document.getElementById("playerTurnID").style.color = players[playerTurn].color;
-    document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
-    document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-    document.getElementById("numTroopsRemaining").style.visibility = "visible";
-    document.getElementById("turnPhase").innerHTML = "Fortify";
-    turnPhase = "fortify"
+    // beginTurn();
+    // document.getElementById("randomAssigns").style.visibility = "visible";
+    // document.getElementById("playerTurnID").style.visibility = "visible";
+    // document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+     //document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+    // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+    // document.getElementById("numTroopsRemaining").style.visibility = "visible";
+    document.getElementById("turnPhase").innerHTML = "Move Troops";
+    // turnPhase = "fortify"
+    turnPhase = "moveTroops"
+    socket.emit('moveTroops1');
 }

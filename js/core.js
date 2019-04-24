@@ -3,7 +3,7 @@
 function restart() {
     //console.log("Restarting");
     location.reload();
-    socket.emit("restart", ID);
+    socket.emit("restart");
 }
 
 // Find index for the country within player data ?????
@@ -53,20 +53,22 @@ function randomAssign() {
             document.getElementById(countries[temp].replace(/\s+/g, '')).value = parseInt(document.getElementById(countries[temp].replace(/\s+/g, '')).value) + 1;
             remainingArmies[playerTurn]--;
         }
-        if(playerTurn === players.length - 1) {
-            playerTurn = 0
-        } else {
-            playerTurn++
-        }
-        document.getElementById("playerTurnID").style.color = players[playerTurn].color;
-        document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
-        document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
-        if(remainingArmies.reduce(function(a,b){return a + b},0)===0) {
-            beginTurn();
-            document.getElementById("turnPhase").innerHTML = "Fortify";
-            document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
-            turnPhase = "fortify"
-        }
+        socket.emit('fortification', userTurn, players)
+        turnPhase = "BULLSHIT"
+        // if(playerTurn === players.length - 1) {
+        //     playerTurn = 0
+        // } else {
+        //     playerTurn++
+        // }
+        // document.getElementById("playerTurnID").style.color = players[playerTurn].color;
+        // document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
+        // document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
+        // if(remainingArmies.reduce(function(a,b){return a + b},0)===0) {
+        //     beginTurn();
+        //     document.getElementById("turnPhase").innerHTML = "Fortify";
+        //     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + fortifyArmies;
+        //     turnPhase = "fortify"
+        // }
     } else if(turnPhase === "fortify"){
         while(fortifyArmies > 0 ) {
             rand = Math.floor(Math.random() * players[playerTurn].owns.length);
@@ -83,6 +85,7 @@ function randomAssign() {
             players[playerTurn].owns[rand].armies++;
             if(fortifyArmies === 0)
             {
+                socket.emit('fortifyIndy', players);
                 document.getElementById("turnPhase").innerHTML = "Attack";
                 document.getElementById("numTroopsRemaining").style.visibility = "hidden";
                 document.getElementById("troopNum").style.visibility = "hidden";
@@ -114,7 +117,7 @@ function assignCountries() {
         players.push({name: "", number: 3, owns:["D"], color: "green"});
         players.push({name: "", number: 4, owns:["D"], color: "magenta"});
         players.push({name: "", number: 5, owns:["D"], color: "black"});
-        players.push({name: "", number: 6, owns:["D"], color: "white"})
+        players.push({name: "", number: 6, owns:["D"], color: "LightSalmon"})
     }
     document.getElementById("playGame").style.visibility = "hidden";
     document.getElementById("select").style.visibility =  "hidden";
@@ -141,7 +144,7 @@ function assignCountries() {
             counter++
         }
     }
-    playerTurn = counter;
+    playerTurn = 0;
     document.getElementById("playerTurnID").style.color = players[playerTurn].color;
     document.getElementById("playerTurnID").innerHTML = "Player Turn: " + players[playerTurn].number;
     for (let z = 0; z < players.length; z++) {
@@ -155,6 +158,7 @@ function assignCountries() {
         remainingArmies[y] = startingArmies[players.length] - originalArmies
     }// End players for loop
     document.getElementById("numTroopsRemaining").innerHTML = "Troops Remaining to Place: " + remainingArmies[playerTurn];
-    turnPhase = "initialFortify"
+    turnPhase = "initialFortify";
+    socket.emit('realstart', players, remainingArmies);
 }
 //control shift k
